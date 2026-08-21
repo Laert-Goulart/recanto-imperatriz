@@ -11,34 +11,42 @@ export const hospedagemContent = {
 
   amenidades: [
     {
+      icon: 'bed',
       title: 'Quartos confortáveis',
       description: 'Acomodações para até 12 pessoas com camas e banheiros privativos.',
     },
     {
+      icon: 'utensils',
       title: 'Cozinha completa',
       description: 'Espaço para preparar refeições ou contratar catering.',
     },
     {
+      icon: 'tv',
       title: 'Sala de estar',
       description: 'Convivência com TV, jogos e espaços aconchegantes.',
     },
     {
+      icon: 'sun',
       title: 'Áreas externas',
       description: 'Jardins, trilhas e áreas de lazer ao ar livre.',
     },
     {
+      icon: 'car',
       title: 'Estacionamento',
       description: 'Vagas para múltiplos veículos no local.',
     },
     {
+      icon: 'wifi',
       title: 'Internet',
       description: 'Conexão de alta velocidade em toda a casa.',
     },
     {
+      icon: 'thermometer',
       title: 'Aquecimento',
       description: 'Conforto para os dias frios de Petrópolis.',
     },
     {
+      icon: 'lock',
       title: 'Privacidade',
       description: 'Casa reservada exclusivamente para seu grupo.',
     },

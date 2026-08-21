@@ -5,6 +5,7 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { BackToTopButton } from '@/components/BackToTopButton';
+import { AmenidadeIcon } from '@/components/AmenidadeIcon';
 import type { HospedagemContent } from '@/content/hospedagem';
 import { siteConfig, colors } from '@/content/config';
 
@@ -140,6 +141,7 @@ export function HospedagemClient({ content: hospedagemContent }: { content: Hosp
         >
           {hospedagemContent.amenidades.map((item, i) => (
             <div key={i} style={{ background: colors.bg, padding: '24px' }}>
+              <AmenidadeIcon name={item.icon} color={colors.accent} />
               <p style={{ fontWeight: 800, fontSize: '15px', margin: '0 0 8px' }}>{item.title}</p>
               <p style={{ fontSize: '14px', opacity: 0.75, margin: 0 }}>{item.description}</p>
             </div>
