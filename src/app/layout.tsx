@@ -1,5 +1,12 @@
 import type { Metadata } from 'next';
+import { Archivo } from 'next/font/google';
 import './globals.css';
+
+const archivo = Archivo({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800', '900'],
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'Recanto da Imperatriz | Eventos Corporativos em Petrópolis',
@@ -24,7 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>🌿</text></svg>" />
       </head>
-      <body style={{ margin: 0, fontFamily: 'system-ui, -apple-system, sans-serif', lineHeight: '1.5' }}>
+      <body className={archivo.className} style={{ margin: 0, lineHeight: '1.5' }}>
         {children}
       </body>
     </html>
