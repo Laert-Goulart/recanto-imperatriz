@@ -337,7 +337,23 @@ export function HomeClient({ content: homeContent }: { content: HomeContent }) {
           PARA QUE TIPO DE ENCONTRO?
         </span>
         <h2 style={{ fontSize: '32px', margin: '12px 0 32px' }}>Escolha o formato do seu evento</h2>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
+        <style>{`
+          .formatos-row { display: flex; flex-wrap: wrap; gap: 16px; }
+          .formato-card-home { transition: box-shadow 0.2s ease; }
+          .formato-card-home:hover { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); }
+          @media (max-width: 700px) {
+            .formatos-row {
+              flex-wrap: nowrap;
+              overflow-x: auto;
+              scroll-snap-type: x mandatory;
+              -webkit-overflow-scrolling: touch;
+              margin: 0 -20px;
+              padding: 0 20px 8px;
+            }
+            .formatos-row > a { flex: 0 0 68% !important; max-width: none !important; scroll-snap-align: start; }
+          }
+        `}</style>
+        <div className="formatos-row">
           {homeContent.formatos.map((formato, i) => (
             <a
               key={i}
@@ -350,6 +366,7 @@ export function HomeClient({ content: homeContent }: { content: HomeContent }) {
               }}
             >
               <div
+                className="formato-card-home"
                 style={{
                   padding: '20px',
                   minHeight: '180px',

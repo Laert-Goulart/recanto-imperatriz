@@ -24,3 +24,10 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Prevent double-tap-to-zoom from breaking the layout of tappable
+   gallery/lightbox elements on mobile. Pinch-zoom for accessibility
+   still works — only the double-tap gesture is suppressed. */
+html, body {
+  touch-action: manipulation;
+}

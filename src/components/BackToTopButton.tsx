@@ -7,10 +7,17 @@ export function BackToTopButton() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setVisible(window.scrollY > 500);
+    const handleScroll = () => {
+      const scrollY = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      setVisible(scrollY > 400);
+    };
     window.addEventListener('scroll', handleScroll, { passive: true });
+    document.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const scrollToTop = () => {
