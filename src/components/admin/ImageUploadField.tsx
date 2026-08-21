@@ -48,26 +48,34 @@ export function ImageUploadField({
   };
 
   return (
-    <div style={{ marginBottom: '8px' }}>
+    <div style={{ marginBottom: '12px' }}>
       {label && (
         <label style={{ display: 'block', fontSize: '13px', fontWeight: 500, marginBottom: '6px' }}>
           {label}
         </label>
       )}
-      <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
-        {value && (
-          <img
-            src={value}
-            alt="Preview"
-            style={{
-              width: '120px',
-              height: '90px',
-              objectFit: 'cover',
-              borderRadius: '4px',
-              border: `1px solid ${colors.divider}`,
-            }}
-          />
-        )}
+      <div style={{ display: 'flex', gap: '14px', alignItems: 'center', flexWrap: 'wrap' }}>
+        <div
+          style={{
+            width: '140px',
+            height: '100px',
+            borderRadius: '4px',
+            border: `1px solid ${colors.divider}`,
+            background: colors.surface,
+            overflow: 'hidden',
+            flex: 'none',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          {value ? (
+            <img src={value} alt="Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          ) : (
+            <span style={{ fontSize: '11px', opacity: 0.5 }}>Sem foto</span>
+          )}
+        </div>
+
         <div>
           <input
             ref={inputRef}
@@ -75,15 +83,47 @@ export function ImageUploadField({
             accept="image/*"
             onChange={handleFileChange}
             disabled={uploading}
-            style={{ fontSize: '13px' }}
+            style={{ display: 'none' }}
           />
-          {uploading && <p style={{ fontSize: '12px', opacity: 0.7, margin: '4px 0 0' }}>Enviando...</p>}
-          {error && <p style={{ fontSize: '12px', color: '#c0392b', margin: '4px 0 0' }}>{error}</p>}
-          {value && (
-            <p style={{ fontSize: '11px', opacity: 0.5, margin: '4px 0 0', wordBreak: 'break-all', maxWidth: '300px' }}>
-              {value}
-            </p>
-          )}
+          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+            <button
+              type="button"
+              onClick={() => inputRef.current?.click()}
+              disabled={uploading}
+              style={{
+                padding: '8px 16px',
+                background: colors.accent,
+                color: '#fff',
+                border: 'none',
+                borderRadius: '4px',
+                fontSize: '13px',
+                fontWeight: 500,
+                cursor: uploading ? 'default' : 'pointer',
+                opacity: uploading ? 0.7 : 1,
+              }}
+            >
+              {uploading ? 'Enviando...' : value ? 'Trocar foto' : 'Enviar foto'}
+            </button>
+            {value && (
+              <button
+                type="button"
+                onClick={() => onChange('')}
+                disabled={uploading}
+                style={{
+                  padding: '8px 16px',
+                  background: 'transparent',
+                  color: '#c0392b',
+                  border: '1px solid #c0392b',
+                  borderRadius: '4px',
+                  fontSize: '13px',
+                  cursor: 'pointer',
+                }}
+              >
+                Remover foto
+              </button>
+            )}
+          </div>
+          {error && <p style={{ fontSize: '12px', color: '#c0392b', margin: '8px 0 0' }}>{error}</p>}
         </div>
       </div>
     </div>
