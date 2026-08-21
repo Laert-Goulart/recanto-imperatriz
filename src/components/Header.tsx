@@ -29,9 +29,11 @@ export function Header() {
         .mobile-nav-link:hover { background: ${colors.surface}; color: ${colors.accentDark} !important; }
         .nav-links-desktop { display: flex; }
         .nav-burger { display: none; }
+        .nav-cta-desktop { display: inline-flex; }
         @media (max-width: 1100px) {
           .nav-links-desktop { display: none !important; }
           .nav-burger { display: flex !important; }
+          .nav-cta-desktop { display: none !important; }
         }
       `}</style>
       <div
@@ -139,8 +141,8 @@ export function Header() {
 
         <Link
           href="#contato"
+          className="nav-cta-desktop"
           style={{
-            display: 'inline-flex',
             alignItems: 'center',
             padding: '8px 16px',
             background: colors.accent,
@@ -161,12 +163,13 @@ export function Header() {
             style={{
               position: 'absolute',
               top: '100%',
-              left: 0,
               right: 0,
+              width: 'min(280px, 90vw)',
               background: colors.bg,
-              borderBottom: `2px solid ${colors.divider}`,
+              border: `1px solid ${colors.divider}`,
+              borderTop: 'none',
               zIndex: 39,
-              boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+              boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.15)',
             }}
           >
             <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -197,6 +200,24 @@ export function Header() {
               <MobileNavLink href={siteConfig.airbnbUrl} onClick={() => setMobileMenuOpen(false)}>
                 Ver no Airbnb
               </MobileNavLink>
+              <a
+                href="#contato"
+                onClick={() => setMobileMenuOpen(false)}
+                style={{
+                  display: 'block',
+                  textAlign: 'center',
+                  margin: '12px',
+                  padding: '12px 16px',
+                  background: colors.accent,
+                  color: '#fff',
+                  textDecoration: 'none',
+                  borderRadius: '4px',
+                  fontSize: '14px',
+                  fontWeight: 500,
+                }}
+              >
+                Fale Conosco
+              </a>
             </div>
           </div>
         )}

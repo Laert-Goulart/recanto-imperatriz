@@ -809,17 +809,21 @@ export function HomeClient({ content: homeContent }: { content: HomeContent }) {
 
       {/* BOOK */}
       <section style={{ background: colors.surface }}>
-        <div
-          style={{
-            maxWidth: '1180px',
-            margin: '0 auto',
-            padding: '56px clamp(20px, 5vw, 64px)',
-            display: 'grid',
-            gridTemplateColumns: 'minmax(260px, 0.8fr) minmax(320px, 1.4fr)',
-            gap: '48px',
-            alignItems: 'center',
-          }}
-        >
+        <style>{`
+          .book-teaser-grid {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 56px clamp(20px, 5vw, 64px);
+            display: grid;
+            grid-template-columns: minmax(260px, 0.8fr) minmax(320px, 1.4fr);
+            gap: 48px;
+            align-items: center;
+          }
+          @media (max-width: 700px) {
+            .book-teaser-grid { grid-template-columns: 1fr; }
+          }
+        `}</style>
+        <div className="book-teaser-grid">
           <div>
             <span
               style={{
