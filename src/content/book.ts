@@ -16,7 +16,7 @@ export const bookContent = {
       { name: 'nome', label: 'Nome', type: 'text', required: true },
       { name: 'email', label: 'E-mail', type: 'email', required: true },
       { name: 'ddd', label: 'DDD', type: 'text', placeholder: '21', maxLength: 2, required: true },
-      { name: 'telefone', label: 'Telefone', type: 'tel', placeholder: '97018-8925', required: true },
+      { name: 'telefone', label: 'Telefone', type: 'tel', placeholder: '97048-2177', required: true },
       {
         name: 'tipoEvento',
         label: 'Tipo de evento',

@@ -1125,7 +1125,7 @@ export function HomeClient({ content: homeContent }: { content: HomeContent }) {
                 type="tel"
                 inputMode="numeric"
                 required
-                placeholder="(21) 97018-8925"
+                placeholder="(21) 97048-2177"
                 value={contactForm.telefone}
                 onChange={(e) => setContactForm({ ...contactForm, telefone: e.target.value })}
                 style={{
