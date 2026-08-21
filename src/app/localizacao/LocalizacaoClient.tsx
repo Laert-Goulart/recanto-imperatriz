@@ -101,13 +101,22 @@ export function LocalizacaoClient({ content: localizacaoContent }: { content: Lo
 
       {/* BLOCOS DE INFO */}
       <section style={{ maxWidth: '1180px', margin: '0 auto', padding: '56px clamp(20px, 5vw, 64px)' }}>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-            gap: '24px',
-          }}
-        >
+        <style>{`
+          .blocos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
+          @media (max-width: 700px) {
+            .blocos-grid {
+              display: flex;
+              overflow-x: auto;
+              gap: 16px;
+              scroll-snap-type: x mandatory;
+              -webkit-overflow-scrolling: touch;
+              margin: 0 -20px;
+              padding: 0 20px 8px;
+            }
+            .blocos-grid > div { flex: 0 0 78%; scroll-snap-align: start; }
+          }
+        `}</style>
+        <div className="blocos-grid">
           {localizacaoContent.blocos.map((bloco, i) => (
             <div key={i} style={{ padding: '24px', background: colors.surface, borderRadius: '2px' }}>
               <div style={{ fontSize: '32px', marginBottom: '12px' }}>{bloco.icon}</div>
