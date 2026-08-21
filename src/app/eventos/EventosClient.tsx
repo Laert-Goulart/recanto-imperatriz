@@ -131,32 +131,45 @@ export function EventosClient({ content: eventosContent }: { content: EventosCon
           QUAL É O SEU FORMATO?
         </span>
         <h2 style={{ fontSize: '32px', margin: '12px 0 32px' }}>Escolha seu tipo de evento</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '24px' }}>
+        <style>{`
+          .formato-card { transition: box-shadow 0.2s ease, transform 0.2s ease; }
+          .formato-card:hover { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); transform: translateY(-2px); }
+          .formato-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
+          @media (max-width: 700px) {
+            .formato-grid {
+              display: flex;
+              overflow-x: auto;
+              gap: 16px;
+              scroll-snap-type: x mandatory;
+              -webkit-overflow-scrolling: touch;
+              padding-bottom: 8px;
+              margin: 0 -20px;
+              padding-left: 20px;
+              padding-right: 20px;
+            }
+            .formato-card-wrapper { flex: 0 0 78%; scroll-snap-align: start; }
+          }
+        `}</style>
+        <div className="formato-grid">
           {eventosContent.subnav.map((formato, i) => (
             <a
               key={i}
               href="#contato"
+              className="formato-card-wrapper"
               style={{
                 textDecoration: 'none',
                 color: 'inherit',
               }}
             >
               <div
+                className="formato-card"
                 style={{
                   padding: '32px 24px',
                   background: colors.bg,
                   border: `1px solid ${colors.divider}`,
                   borderRadius: '2px',
-                  transition: 'all 0.2s',
                   cursor: 'pointer',
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
-                  (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)';
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.boxShadow = 'none';
-                  (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
+                  height: '100%',
                 }}
               >
                 <div style={{ fontSize: '32px', marginBottom: '12px' }}>{formato.icon}</div>

@@ -154,53 +154,53 @@ export function Header() {
         >
           Fale Conosco
         </Link>
-      </nav>
 
-      {/* Mobile Menu Panel */}
-      {mobileMenuOpen && (
-        <div
-          style={{
-            position: 'absolute',
-            top: '100%',
-            left: 0,
-            right: 0,
-            background: colors.bg,
-            borderBottom: `2px solid ${colors.divider}`,
-            zIndex: 39,
-            boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
-          }}
-        >
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <MobileNavLink href="/eventos" onClick={() => setMobileMenuOpen(false)}>
-              Eventos Corporativos
-            </MobileNavLink>
-            <MobileNavLink href="/hospedagem" onClick={() => setMobileMenuOpen(false)}>
-              Hospedagem
-            </MobileNavLink>
-            <MobileNavLink href="/book" onClick={() => setMobileMenuOpen(false)}>
-              Book Corporativo
-            </MobileNavLink>
-            <MobileNavLink href="/fauna" onClick={() => setMobileMenuOpen(false)}>
-              Espécies Nativas
-            </MobileNavLink>
-            <MobileNavLink href="/localizacao" onClick={() => setMobileMenuOpen(false)}>
-              Localização
-            </MobileNavLink>
-            {customLinks.map((link) => (
-              <MobileNavLink
-                key={link.slug}
-                href={`/pagina/${link.slug}`}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {link.title}
+        {/* Mobile Menu Panel */}
+        {mobileMenuOpen && (
+          <div
+            style={{
+              position: 'absolute',
+              top: '100%',
+              left: 0,
+              right: 0,
+              background: colors.bg,
+              borderBottom: `2px solid ${colors.divider}`,
+              zIndex: 39,
+              boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+            }}
+          >
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <MobileNavLink href="/eventos" onClick={() => setMobileMenuOpen(false)}>
+                Eventos Corporativos
               </MobileNavLink>
-            ))}
-            <MobileNavLink href={siteConfig.airbnbUrl} onClick={() => setMobileMenuOpen(false)}>
-              Ver no Airbnb
-            </MobileNavLink>
+              <MobileNavLink href="/hospedagem" onClick={() => setMobileMenuOpen(false)}>
+                Hospedagem
+              </MobileNavLink>
+              <MobileNavLink href="/book" onClick={() => setMobileMenuOpen(false)}>
+                Book Corporativo
+              </MobileNavLink>
+              <MobileNavLink href="/fauna" onClick={() => setMobileMenuOpen(false)}>
+                Espécies Nativas
+              </MobileNavLink>
+              <MobileNavLink href="/localizacao" onClick={() => setMobileMenuOpen(false)}>
+                Localização
+              </MobileNavLink>
+              {customLinks.map((link) => (
+                <MobileNavLink
+                  key={link.slug}
+                  href={`/pagina/${link.slug}`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.title}
+                </MobileNavLink>
+              ))}
+              <MobileNavLink href={siteConfig.airbnbUrl} onClick={() => setMobileMenuOpen(false)}>
+                Ver no Airbnb
+              </MobileNavLink>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </nav>
     </>
   );
 }
