@@ -23,6 +23,17 @@ export function Header() {
 
   return (
     <>
+      <style>{`
+        .nav-link { position: relative; }
+        .nav-link:hover { color: ${colors.accentDark} !important; border-bottom-color: ${colors.accent} !important; }
+        .mobile-nav-link:hover { background: ${colors.surface}; color: ${colors.accentDark} !important; }
+        .nav-links-desktop { display: flex; }
+        .nav-burger { display: none; }
+        @media (max-width: 1100px) {
+          .nav-links-desktop { display: none !important; }
+          .nav-burger { display: flex !important; }
+        }
+      `}</style>
       <div
         style={{
           background: colors.accent,
@@ -88,7 +99,15 @@ export function Header() {
             href={siteConfig.airbnbUrl}
             target="_blank"
             rel="noopener"
-            style={{ textDecoration: 'none', color: colors.text, padding: '6px 2px' }}
+            className="nav-link"
+            style={{
+              textDecoration: 'none',
+              color: colors.text,
+              padding: '6px 2px',
+              borderBottom: '2px solid transparent',
+              transition: 'color 0.2s ease, border-color 0.2s ease',
+              whiteSpace: 'nowrap',
+            }}
           >
             Ver no Airbnb
           </a>
@@ -190,6 +209,7 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
   return (
     <Link
       href={href}
+      className="nav-link"
       style={{
         textDecoration: 'none',
         color: colors.text,
@@ -216,12 +236,14 @@ function MobileNavLink({
   return (
     <a
       href={href}
+      className="mobile-nav-link"
       style={{
         padding: '16px clamp(20px, 5vw, 64px)',
         borderBottom: `1px solid ${colors.divider}`,
         display: 'block',
         color: colors.text,
         textDecoration: 'none',
+        transition: 'background 0.2s ease, color 0.2s ease',
       }}
       onClick={onClick}
     >

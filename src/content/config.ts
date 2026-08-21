@@ -14,6 +14,7 @@ export const colors = {
   surface: '#eee3cb',
   text: '#1e2119',
   accent: '#355e3b',
+  accentDark: '#26472b',
   accent2: '#b8902f',
   divider: '#e0dcd0',
 };

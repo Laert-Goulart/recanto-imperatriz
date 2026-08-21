@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { siteConfig, colors } from '@/content/config';
 
 export function Footer() {
@@ -39,19 +40,27 @@ export function Footer() {
           width: '100%',
         }}
       >
-        <img
-          src="/images/logo-recanto-imperatriz.png"
-          alt={siteConfig.name}
+        <Link
+          href="/"
           style={{
-            height: '168px',
-            width: 'auto',
             display: 'block',
             margin: '0 auto 12px',
-            padding: '10px',
-            background: 'radial-gradient(circle, rgba(247, 243, 234, 0.14) 0%, transparent 72%)',
-            filter: 'drop-shadow(0 4px 18px rgba(0, 0, 0, 0.45))',
+            width: 'fit-content',
           }}
-        />
+        >
+          <img
+            src="/images/logo-recanto-imperatriz.png"
+            alt={siteConfig.name}
+            style={{
+              height: '168px',
+              width: 'auto',
+              display: 'block',
+              padding: '10px',
+              background: 'radial-gradient(circle, rgba(247, 243, 234, 0.14) 0%, transparent 72%)',
+              filter: 'drop-shadow(0 4px 18px rgba(0, 0, 0, 0.45))',
+            }}
+          />
+        </Link>
         <div
           style={{
             fontSize: '13px',
