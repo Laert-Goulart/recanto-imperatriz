@@ -56,6 +56,7 @@ export function Header() {
             overflowX: 'auto',
             flex: '0 1 auto',
             minWidth: 0,
+            marginLeft: 'auto',
           }}
           className="nav-links-desktop"
         >
