@@ -91,6 +91,7 @@ export function FaunaClient({ content: faunaContent }: { content: FaunaContent }
             style={{
               fontSize: 'clamp(32px, 4.2vw, 52px)',
               lineHeight: 1.08,
+                fontWeight: 700,
               letterSpacing: '-0.02em',
               margin: '16px 0 20px',
               color: '#f3f2f2',

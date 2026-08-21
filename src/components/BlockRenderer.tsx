@@ -61,7 +61,7 @@ export function BlockRenderer({ block }: { block: Block }) {
               {block.tag}
             </span>
           )}
-          <h1 style={{ fontSize: 'clamp(28px, 4vw, 48px)', lineHeight: 1.1, margin: '16px 0 20px', maxWidth: '22ch' }}>
+          <h1 style={{ fontSize: 'clamp(28px, 4vw, 48px)', lineHeight: 1.1, fontWeight: 700, margin: '16px 0 20px', maxWidth: '22ch' }}>
             {block.title}
           </h1>
           <p style={{ fontSize: '17px', lineHeight: 1.6, opacity: 0.92, maxWidth: '52ch', margin: 0 }}>
