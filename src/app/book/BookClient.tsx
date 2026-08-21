@@ -131,20 +131,15 @@ export function BookClient({ content: bookContent }: { content: BookContent }) {
 
             {!submitted ? (
               <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '16px' }}>
-                {bookContent.form.fields.map((field) => (
-                  <div key={field.name}>
-                    <label
-                      htmlFor={field.name}
-                      style={{
-                        display: 'block',
-                        fontSize: '14px',
-                        fontWeight: 500,
-                        marginBottom: '6px',
-                      }}
-                    >
-                      {field.label}
-                    </label>
-                    {field.type === 'select' ? (
+                {(() => {
+                  const dddField = bookContent.form.fields.find((f) => f.name === 'ddd');
+                  const telefoneField = bookContent.form.fields.find((f) => f.name === 'telefone');
+                  const otherFields = bookContent.form.fields.filter(
+                    (f) => f.name !== 'ddd' && f.name !== 'telefone'
+                  );
+
+                  const renderInput = (field: (typeof bookContent.form.fields)[number]) =>
+                    field.type === 'select' ? (
                       <select
                         id={field.name}
                         required={field.required}
@@ -186,9 +181,65 @@ export function BookClient({ content: bookContent }: { content: BookContent }) {
                           color: colors.text,
                         }}
                       />
-                    )}
-                  </div>
-                ))}
+                    );
+
+                  return (
+                    <>
+                      <div key="nome-email-group" style={{ display: 'contents' }}>
+                        {otherFields
+                          .filter((f) => f.name === 'nome' || f.name === 'email')
+                          .map((field) => (
+                            <div key={field.name}>
+                              <label
+                                htmlFor={field.name}
+                                style={{ display: 'block', fontSize: '14px', fontWeight: 500, marginBottom: '6px' }}
+                              >
+                                {field.label}
+                              </label>
+                              {renderInput(field)}
+                            </div>
+                          ))}
+                      </div>
+
+                      {dddField && telefoneField && (
+                        <div style={{ display: 'grid', gridTemplateColumns: '80px 1fr', gap: '12px' }}>
+                          <div>
+                            <label
+                              htmlFor={dddField.name}
+                              style={{ display: 'block', fontSize: '14px', fontWeight: 500, marginBottom: '6px' }}
+                            >
+                              {dddField.label}
+                            </label>
+                            {renderInput(dddField)}
+                          </div>
+                          <div>
+                            <label
+                              htmlFor={telefoneField.name}
+                              style={{ display: 'block', fontSize: '14px', fontWeight: 500, marginBottom: '6px' }}
+                            >
+                              {telefoneField.label}
+                            </label>
+                            {renderInput(telefoneField)}
+                          </div>
+                        </div>
+                      )}
+
+                      {otherFields
+                        .filter((f) => f.name !== 'nome' && f.name !== 'email')
+                        .map((field) => (
+                          <div key={field.name}>
+                            <label
+                              htmlFor={field.name}
+                              style={{ display: 'block', fontSize: '14px', fontWeight: 500, marginBottom: '6px' }}
+                            >
+                              {field.label}
+                            </label>
+                            {renderInput(field)}
+                          </div>
+                        ))}
+                    </>
+                  );
+                })()}
                 <button
                   type="submit"
                   style={{
