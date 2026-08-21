@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
+import { ProvaRapidaIcon } from '@/components/ProvaRapidaIcon';
 import type { HomeContent } from '@/content/home';
 import { siteConfig, colors } from '@/content/config';
 import { useLead } from '@/hooks/useLead';
@@ -299,6 +300,7 @@ export function HomeClient({ content: homeContent }: { content: HomeContent }) {
                 borderTop: `2px solid ${colors.divider}`,
               }}
             >
+              <ProvaRapidaIcon name={item.icon} color={colors.accent} />
               <p
                 style={{
                   fontSize: '12px',
