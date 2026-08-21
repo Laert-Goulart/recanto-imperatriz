@@ -53,3 +53,5 @@ export const localizacaoContent = {
     description: 'Recomendamos conhecer o local antes de confirmar seu evento. Fale conosco pelo WhatsApp para marcar.',
   },
 };
+
+export type LocalizacaoContent = typeof localizacaoContent;

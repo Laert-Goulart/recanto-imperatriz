@@ -1,11 +1,25 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { siteConfig, colors } from '@/content/config';
+import { createClient } from '@/lib/supabase/client';
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [customLinks, setCustomLinks] = useState<{ slug: string; title: string }[]>([]);
+
+  useEffect(() => {
+    const supabase = createClient();
+    supabase
+      .from('custom_pages')
+      .select('slug, title')
+      .eq('published', true)
+      .eq('show_in_menu', true)
+      .then(({ data }) => {
+        if (data) setCustomLinks(data);
+      });
+  }, []);
 
   return (
     <>
@@ -65,6 +79,11 @@ export function Header() {
           <NavLink href="/book">Book Corporativo</NavLink>
           <NavLink href="/fauna">Espécies Nativas</NavLink>
           <NavLink href="/localizacao">Localização</NavLink>
+          {customLinks.map((link) => (
+            <NavLink key={link.slug} href={`/pagina/${link.slug}`}>
+              {link.title}
+            </NavLink>
+          ))}
           <a
             href={siteConfig.airbnbUrl}
             target="_blank"
@@ -148,6 +167,15 @@ export function Header() {
             <MobileNavLink href="/localizacao" onClick={() => setMobileMenuOpen(false)}>
               Localização
             </MobileNavLink>
+            {customLinks.map((link) => (
+              <MobileNavLink
+                key={link.slug}
+                href={`/pagina/${link.slug}`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {link.title}
+              </MobileNavLink>
+            ))}
             <MobileNavLink href={siteConfig.airbnbUrl} onClick={() => setMobileMenuOpen(false)}>
               Ver no Airbnb
             </MobileNavLink>

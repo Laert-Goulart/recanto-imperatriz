@@ -76,3 +76,5 @@ export const eventosContent = {
     description: 'Consulte sobre disponibilidade e formatos customizados.',
   },
 };
+
+export type EventosContent = typeof eventosContent;

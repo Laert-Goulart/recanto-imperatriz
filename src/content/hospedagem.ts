@@ -64,3 +64,5 @@ export const hospedagemContent = {
     description: 'Confira avaliações e mais fotos na plataforma de hospedagem.',
   },
 };
+
+export type HospedagemContent = typeof hospedagemContent;

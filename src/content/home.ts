@@ -177,3 +177,5 @@ export const homeContent = {
     description: 'Preencha seus dados e nossa equipe retorna, ou fale direto pelo WhatsApp.',
   },
 };
+
+export type HomeContent = typeof homeContent;

@@ -66,3 +66,5 @@ export const bookContent = {
     ],
   },
 };
+
+export type BookContent = typeof bookContent;

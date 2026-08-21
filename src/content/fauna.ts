@@ -85,3 +85,5 @@ export const faunaContent = {
       'O Recanto da Imperatriz está inserido em uma área de preservação da Mata Atlântica, habitat de diversas espécies de aves, mamíferos e insetos. Observar a fauna local é parte da experiência de estar em contato com a natureza.',
   },
 };
+
+export type FaunaContent = typeof faunaContent;
