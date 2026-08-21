@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
+import { BackToTopButton } from '@/components/BackToTopButton';
 import type { LocalizacaoContent } from '@/content/localizacao';
 import { siteConfig, colors } from '@/content/config';
 
@@ -253,6 +254,7 @@ export function LocalizacaoClient({ content: localizacaoContent }: { content: Lo
       </section>
 
       <Footer />
+      <BackToTopButton />
       <WhatsAppButton message="Olá! Gostaria de saber mais sobre a localização e acesso ao Recanto da Imperatriz." />
     </div>
   );

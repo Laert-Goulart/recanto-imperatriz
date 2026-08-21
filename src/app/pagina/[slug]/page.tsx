@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
+import { BackToTopButton } from '@/components/BackToTopButton';
 import { BlockRenderer } from '@/components/BlockRenderer';
 import { Block } from '@/lib/blocks';
 import { colors } from '@/content/config';
@@ -31,6 +32,7 @@ export default async function CustomPage({ params }: { params: Promise<{ slug: s
         <BlockRenderer key={i} block={block} />
       ))}
       <Footer />
+      <BackToTopButton />
       <WhatsAppButton />
     </div>
   );

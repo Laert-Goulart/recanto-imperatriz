@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
+import { BackToTopButton } from '@/components/BackToTopButton';
 import type { EventosContent } from '@/content/eventos';
 import { siteConfig, colors } from '@/content/config';
 
@@ -451,6 +452,7 @@ export function EventosClient({ content: eventosContent }: { content: EventosCon
       </section>
 
       <Footer />
+      <BackToTopButton />
       <WhatsAppButton message="Olá! Vim pelo site de eventos corporativos do Recanto da Imperatriz." />
     </div>
   );

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
+import { BackToTopButton } from '@/components/BackToTopButton';
 import type { BookContent } from '@/content/book';
 import { siteConfig, colors } from '@/content/config';
 
@@ -395,6 +396,7 @@ export function BookClient({ content: bookContent }: { content: BookContent }) {
       </section>
 
       <Footer />
+      <BackToTopButton />
       <WhatsAppButton message="Olá! Gostaria do Book Corporativo do Recanto da Imperatriz." />
     </div>
   );

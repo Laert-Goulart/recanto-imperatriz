@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
+import { BackToTopButton } from '@/components/BackToTopButton';
 import type { HospedagemContent } from '@/content/hospedagem';
 import { siteConfig, colors } from '@/content/config';
 
@@ -347,6 +348,7 @@ export function HospedagemClient({ content: hospedagemContent }: { content: Hosp
       </section>
 
       <Footer />
+      <BackToTopButton />
       <WhatsAppButton message="Olá! Gostaria de consultar hospedagem no Recanto da Imperatriz." />
     </div>
   );
