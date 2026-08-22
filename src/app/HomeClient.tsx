@@ -757,52 +757,53 @@ export function HomeClient({ content: homeContent }: { content: HomeContent }) {
               background: colors.surface,
             }}
           />
-          {mapaOpen && (
-            <>
-              <div
-                onClick={() => setMapaOpen(false)}
-                style={{
-                  position: 'fixed',
-                  inset: 0,
-                  background: 'rgba(20,18,17,0.92)',
-                  zIndex: 100,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  padding: '32px',
-                  cursor: 'zoom-out',
-                }}
-              >
-                <img
-                  src={homeContent.localizacao.mapa.src}
-                  alt={homeContent.localizacao.mapa.alt}
-                  style={{
-                    maxWidth: '100%',
-                    maxHeight: '100%',
-                    objectFit: 'contain',
-                    boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
-                  }}
-                />
-                <button
-                  onClick={() => setMapaOpen(false)}
-                  style={{
-                    position: 'absolute',
-                    top: '24px',
-                    right: '24px',
-                    width: '44px',
-                    height: '44px',
-                    background: colors.bg,
-                    border: 'none',
-                    fontSize: '22px',
-                    cursor: 'pointer',
-                  }}
-                >
-                  ×
-                </button>
-              </div>
-            </>
-          )}
         </div>
+        {mapaOpen && (
+          <div
+            onClick={() => setMapaOpen(false)}
+            style={{
+              position: 'fixed',
+              inset: 0,
+              background: 'rgba(20,18,17,0.92)',
+              zIndex: 100,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '32px',
+              cursor: 'zoom-out',
+            }}
+          >
+            <img
+              src={homeContent.localizacao.mapa.src}
+              alt={homeContent.localizacao.mapa.alt}
+              style={{
+                maxWidth: '100%',
+                maxHeight: '100%',
+                objectFit: 'contain',
+                boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
+              }}
+            />
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setMapaOpen(false);
+              }}
+              style={{
+                position: 'absolute',
+                top: '24px',
+                right: '24px',
+                width: '44px',
+                height: '44px',
+                background: colors.bg,
+                border: 'none',
+                fontSize: '22px',
+                cursor: 'pointer',
+              }}
+            >
+              ×
+            </button>
+          </div>
+        )}
       </section>
 
       <hr style={{ margin: 0, border: 'none', borderTop: `2px solid ${colors.divider}` }} />
