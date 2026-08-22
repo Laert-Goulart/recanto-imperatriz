@@ -222,13 +222,22 @@ export function FaunaClient({ content: faunaContent }: { content: FaunaContent }
           </>
         )}
 
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-            gap: '12px',
-          }}
-        >
+        <style>{`
+          .fauna-galeria-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+          @media (max-width: 700px) {
+            .fauna-galeria-grid {
+              display: flex;
+              overflow-x: auto;
+              gap: 10px;
+              scroll-snap-type: x mandatory;
+              -webkit-overflow-scrolling: touch;
+              margin: 0 -20px;
+              padding: 0 20px 8px;
+            }
+            .fauna-galeria-grid > figure { flex: 0 0 45%; scroll-snap-align: start; }
+          }
+        `}</style>
+        <div className="fauna-galeria-grid">
           {faunaContent.galeria.map((item, i) => (
             <figure
               key={i}
