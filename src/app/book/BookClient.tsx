@@ -17,14 +17,21 @@ export function BookClient({ content: bookContent }: { content: BookContent }) {
     e.preventDefault();
     const { nome, email, ddd, telefone, tipoEvento } = formData;
     const msg = `Olá! Sou ${nome}, e-mail: ${email}, telefone: (${ddd}) ${telefone}. Interesse em: ${tipoEvento}. Gostaria do Book Corporativo.`;
+
+    // Must run synchronously inside the click handler — mobile browsers
+    // (especially iOS Safari) silently block downloads/popups triggered
+    // from a setTimeout callback because it's no longer inside the
+    // trusted user-gesture window.
+    const link = document.createElement('a');
+    link.href = bookContent.pdf;
+    link.download = 'Recanto-Imperatriz-Book-Corporativo.pdf';
+    link.target = '_blank';
+    link.rel = 'noopener';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
     window.open(`https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(msg)}`, '_blank');
-    // Trigger download
-    setTimeout(() => {
-      const link = document.createElement('a');
-      link.href = bookContent.pdf;
-      link.download = 'Recanto-Imperatriz-Book-Corporativo.pdf';
-      link.click();
-    }, 500);
     setSubmitted(true);
   };
 
