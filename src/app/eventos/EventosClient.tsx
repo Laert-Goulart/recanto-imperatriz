@@ -300,13 +300,22 @@ export function EventosClient({ content: eventosContent }: { content: EventosCon
           </>
         )}
 
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '12px',
-          }}
-        >
+        <style>{`
+          .ambientes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+          @media (max-width: 700px) {
+            .ambientes-grid {
+              display: flex;
+              overflow-x: auto;
+              gap: 10px;
+              scroll-snap-type: x mandatory;
+              -webkit-overflow-scrolling: touch;
+              margin: 0 -20px;
+              padding: 0 20px 8px;
+            }
+            .ambientes-grid > figure { flex: 0 0 45%; scroll-snap-align: start; }
+          }
+        `}</style>
+        <div className="ambientes-grid">
           {eventosContent.ambientes.images.map((item, i) => (
             <figure
               key={i}
@@ -383,13 +392,22 @@ export function EventosClient({ content: eventosContent }: { content: EventosCon
           INFORMAÇÕES TÉCNICAS
         </span>
         <h2 style={{ fontSize: '32px', margin: '12px 0 32px' }}>Resumo das capacidades</h2>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '24px',
-          }}
-        >
+        <style>{`
+          .resumo-tecnico-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
+          @media (max-width: 700px) {
+            .resumo-tecnico-grid {
+              display: flex;
+              overflow-x: auto;
+              gap: 16px;
+              scroll-snap-type: x mandatory;
+              -webkit-overflow-scrolling: touch;
+              margin: 0 -20px;
+              padding: 0 20px 8px;
+            }
+            .resumo-tecnico-grid > div { flex: 0 0 68%; scroll-snap-align: start; }
+          }
+        `}</style>
+        <div className="resumo-tecnico-grid">
           {Object.entries(eventosContent.resumoTecnico).map(([key, value]) => (
             <div
               key={key}
