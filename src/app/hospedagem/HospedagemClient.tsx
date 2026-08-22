@@ -132,14 +132,22 @@ export function HospedagemClient({ content: hospedagemContent }: { content: Hosp
           AMENIDADES
         </span>
         <h2 style={{ fontSize: '32px', margin: '12px 0 32px' }}>O que está incluído</h2>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-            gap: '2px',
-            background: colors.divider,
-          }}
-        >
+        <style>{`
+          .amenidades-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2px; background: ${colors.divider}; }
+          @media (max-width: 700px) {
+            .amenidades-grid {
+              display: flex;
+              overflow-x: auto;
+              gap: 2px;
+              scroll-snap-type: x mandatory;
+              -webkit-overflow-scrolling: touch;
+              margin: 0 -20px;
+              padding: 0 20px 8px;
+            }
+            .amenidades-grid > div { flex: 0 0 70%; scroll-snap-align: start; }
+          }
+        `}</style>
+        <div className="amenidades-grid">
           {hospedagemContent.amenidades.map((item, i) => (
             <div key={i} style={{ background: colors.bg, padding: '24px' }}>
               <AmenidadeIcon name={item.icon} color={colors.accent} />
@@ -268,13 +276,22 @@ export function HospedagemClient({ content: hospedagemContent }: { content: Hosp
           </>
         )}
 
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '12px',
-          }}
-        >
+        <style>{`
+          .hospedagem-galeria-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+          @media (max-width: 700px) {
+            .hospedagem-galeria-grid {
+              display: flex;
+              overflow-x: auto;
+              gap: 10px;
+              scroll-snap-type: x mandatory;
+              -webkit-overflow-scrolling: touch;
+              margin: 0 -20px;
+              padding: 0 20px 8px;
+            }
+            .hospedagem-galeria-grid > figure { flex: 0 0 45%; scroll-snap-align: start; }
+          }
+        `}</style>
+        <div className="hospedagem-galeria-grid">
           {hospedagemContent.galeria.images.map((item, i) => (
             <figure
               key={i}
