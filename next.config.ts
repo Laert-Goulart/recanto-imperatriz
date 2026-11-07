@@ -51,7 +51,16 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     // A antiga página de hospedagem foi substituída pela página de temporada
-    return [{ source: '/hospedagem', destination: '/temporada', permanent: true }];
+    return [
+      { source: '/hospedagem', destination: '/temporada', permanent: true },
+      // Endereço único: sem "www" redireciona para "www" (evita conteúdo duplicado no Google)
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'recantodaimperatriz.com.br' }],
+        destination: 'https://www.recantodaimperatriz.com.br/:path*',
+        permanent: true,
+      },
+    ];
   },
 };
 
