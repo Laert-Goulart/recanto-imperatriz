@@ -287,7 +287,7 @@ export function EventosClient({ content: eventosContent }: { content: EventosCon
               }}
               onClick={() => setGaleriaOpenId(null)}
             >
-              <img
+              <img loading="lazy" decoding="async"
                 src={eventosContent.ambientes.images[currentGaleriaIndex].src}
                 alt={eventosContent.ambientes.images[currentGaleriaIndex].alt}
                 style={{
@@ -326,7 +326,7 @@ export function EventosClient({ content: eventosContent }: { content: EventosCon
                 cursor: 'zoom-in',
               }}
             >
-              <img
+              <img loading="lazy" decoding="async"
                 src={item.src}
                 alt={item.alt}
                 style={{

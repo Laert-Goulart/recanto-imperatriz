@@ -4,10 +4,10 @@ export const homeContent = {
     title: 'Eventos corporativos em Petrópolis para equipes que precisam sair da rotina sem perder estrutura.',
     description: 'Um espaço reservado para reuniões, treinamentos, workshops, imersões e confraternizações, com ambiente de casa e contato com a natureza.',
     images: [
-      { src: '/images/hero-fachada-externa.png', alt: 'Fachada da casa' },
-      { src: '/images/hero-trilha-flores.png', alt: 'Área externa' },
-      { src: '/images/hero-casa-hortensias.png', alt: 'Ambiente interno' },
-      { src: '/images/hero-cachoeira-poco.png', alt: 'Vista da serra' },
+      { src: '/images/webp/hero-fachada-externa.webp', alt: 'Fachada da casa' },
+      { src: '/images/webp/hero-trilha-flores.webp', alt: 'Área externa' },
+      { src: '/images/webp/hero-casa-hortensias.webp', alt: 'Ambiente interno' },
+      { src: '/images/webp/hero-cachoeira-poco.webp', alt: 'Vista da serra' },
     ],
   },
 
@@ -54,7 +54,7 @@ export const homeContent = {
     description:
       'Trocar o escritório pela serra muda o ritmo da conversa. O Recanto da Imperatriz une privacidade, contato com a natureza e infraestrutura para que reuniões, treinamentos e imersões aconteçam sem as distrações do dia a dia.',
     image: {
-      src: '/images/experiencia-areas-comuns.png',
+      src: '/images/webp/experiencia-areas-comuns.webp',
       alt: 'Foto do ambiente / natureza',
     },
   },
@@ -98,14 +98,14 @@ export const homeContent = {
     tag: 'GALERIA',
     title: 'A casa em imagens',
     images: [
-      { src: '/images/hero-fachada-externa.png', alt: 'Fachada da casa' },
-      { src: '/images/hero-trilha-flores.png', alt: 'Trilha com flores' },
-      { src: '/images/hero-casa-hortensias.png', alt: 'Casa com hortênsias' },
-      { src: '/images/hero-cachoeira-poco.png', alt: 'Cachoeira' },
-      { src: '/images/hero-cachoeira-jardim.png', alt: 'Jardim com cachoeira' },
-      { src: '/images/hero-lago-ponte.png', alt: 'Lago com ponte' },
-      { src: '/images/hero-jardins-sitio.png', alt: 'Jardins do sítio' },
-      { src: '/images/experiencia-areas-comuns.png', alt: 'Áreas comuns' },
+      { src: '/images/webp/hero-fachada-externa.webp', alt: 'Fachada da casa' },
+      { src: '/images/webp/hero-trilha-flores.webp', alt: 'Trilha com flores' },
+      { src: '/images/webp/hero-casa-hortensias.webp', alt: 'Casa com hortênsias' },
+      { src: '/images/webp/hero-cachoeira-poco.webp', alt: 'Cachoeira' },
+      { src: '/images/webp/hero-cachoeira-jardim.webp', alt: 'Jardim com cachoeira' },
+      { src: '/images/webp/hero-lago-ponte.webp', alt: 'Lago com ponte' },
+      { src: '/images/webp/hero-jardins-sitio.webp', alt: 'Jardins do sítio' },
+      { src: '/images/webp/experiencia-areas-comuns.webp', alt: 'Áreas comuns' },
     ],
   },
 
@@ -123,7 +123,7 @@ export const homeContent = {
     description:
       'Perto o suficiente para caber na agenda da semana, longe o bastante para tirar o time do piloto automático. Endereço completo e roteiro de acesso enviados após o primeiro contato.',
     mapa: {
-      src: '/images/mapa-acesso.png',
+      src: '/images/webp/mapa-acesso.webp',
       alt: 'Mapa de acesso ao Recanto da Imperatriz',
     },
   },
@@ -134,7 +134,7 @@ export const homeContent = {
     description:
       'Ambientes, formatos de uso e informações práticas reunidas em um material que você pode compartilhar com quem decide.',
     cover: {
-      src: '/images/book-capa-ebook.png',
+      src: '/images/webp/book-capa-ebook.webp',
       alt: 'Capa do Book Corporativo',
     },
     pdf: '/images/book-corporativo-recanto-da-imperatriz.pdf',

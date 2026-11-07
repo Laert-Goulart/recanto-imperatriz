@@ -6,6 +6,9 @@ export const siteConfig = {
   whatsappFormatted: '(21) 97048-2177',
   email: 'contato@recantodaimperatriz.com.br',
   location: 'Petrópolis, RJ',
+  // Preencha para exibir no rodapé, ex.: '12.345.678/0001-90' (vazio = não aparece)
+  cnpj: '',
+  razaoSocial: '',
   airbnbUrl: 'https://www.airbnb.com.br/rooms/1303684952181506402',
 };
 

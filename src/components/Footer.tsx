@@ -17,7 +17,7 @@ export function Footer() {
           position: 'absolute',
           inset: 0,
           zIndex: 0,
-          backgroundImage: 'url(/images/footer-casa-aerea.png)',
+          backgroundImage: 'url(/images/webp/footer-casa-aerea.webp)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -48,8 +48,8 @@ export function Footer() {
             width: 'fit-content',
           }}
         >
-          <img
-            src="/images/logo-recanto-imperatriz.png"
+          <img loading="lazy" decoding="async"
+            src="/images/webp/logo-recanto-imperatriz.webp"
             alt={siteConfig.name}
             style={{
               height: '168px',
@@ -77,6 +77,11 @@ export function Footer() {
             {siteConfig.email} · {siteConfig.whatsappFormatted}
           </span>
         </div>
+        {siteConfig.cnpj && (
+          <div style={{ marginTop: '10px', fontSize: '12px', textAlign: 'center', color: colors.bg, opacity: 0.75 }}>
+            {siteConfig.razaoSocial ? `${siteConfig.razaoSocial} · ` : ''}CNPJ {siteConfig.cnpj}
+          </div>
+        )}
         <div style={{ marginTop: '10px', fontSize: '12px', textAlign: 'center' }}>
           <Link href="/privacidade" style={{ color: colors.bg, opacity: 0.75 }}>Política de Privacidade</Link>
         </div>

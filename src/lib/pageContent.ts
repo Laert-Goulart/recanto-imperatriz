@@ -36,9 +36,15 @@ export async function getPageContent<T>(slug: string, fallback: T): Promise<T> {
     .maybeSingle();
 
   if (data?.content) {
-    return deepMergeDefaults(data.content, fallback);
+    return toWebpPaths(deepMergeDefaults(data.content, fallback));
   }
   return fallback;
+}
+
+// Conteúdo salvo antes da conversão aponta para /images/x.png; troca pela versão WebP
+function toWebpPaths<T>(value: T): T {
+  const json = JSON.stringify(value).replace(/\/images\/([^/"]+)\.(png|jpe?g)/g, '/images/webp/$1.webp');
+  return JSON.parse(json) as T;
 }
 
 export const FIXED_PAGES: { slug: string; label: string }[] = [

@@ -296,7 +296,7 @@ export function BookClient({ content: bookContent }: { content: BookContent }) {
               cursor: bookCoverOpen ? 'zoom-out' : 'zoom-in',
             }}
           >
-            <img
+            <img loading="lazy" decoding="async"
               src={bookContent.cover.src}
               alt={bookContent.cover.alt}
               style={{

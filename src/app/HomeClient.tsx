@@ -87,7 +87,11 @@ export function HomeClient({ content: homeContent }: { content: HomeContent }) {
               transition: 'transform 0.6s cubic-bezier(.65,0,.35,1)',
             }}
           >
+            {/* 1ª foto carrega com prioridade; as outras ficam prontas para o carrossel sem disputar banda */}
             <img
+              loading="eager"
+              decoding={i === 0 ? 'sync' : 'async'}
+              fetchPriority={i === 0 ? 'high' : 'low'}
               src={img.src}
               alt={img.alt}
               style={{
@@ -606,7 +610,7 @@ export function HomeClient({ content: homeContent }: { content: HomeContent }) {
               }}
               onClick={() => setGaleriaOpenId(null)}
             >
-              <img
+              <img loading="lazy" decoding="async"
                 src={homeContent.galeria.images[currentGaleriaIndex].src}
                 alt={homeContent.galeria.images[currentGaleriaIndex].alt}
                 style={{
@@ -636,7 +640,7 @@ export function HomeClient({ content: homeContent }: { content: HomeContent }) {
                 cursor: 'zoom-in',
               }}
             >
-              <img
+              <img loading="lazy" decoding="async"
                 src={item.src}
                 alt={item.alt}
                 style={{
@@ -747,7 +751,7 @@ export function HomeClient({ content: homeContent }: { content: HomeContent }) {
           }}
           onClick={() => setMapaOpen(true)}
         >
-          <img
+          <img loading="lazy" decoding="async"
             src={homeContent.localizacao.mapa.src}
             alt={homeContent.localizacao.mapa.alt}
             style={{
@@ -773,7 +777,7 @@ export function HomeClient({ content: homeContent }: { content: HomeContent }) {
               cursor: 'zoom-out',
             }}
           >
-            <img
+            <img loading="lazy" decoding="async"
               src={homeContent.localizacao.mapa.src}
               alt={homeContent.localizacao.mapa.alt}
               style={{
@@ -872,7 +876,7 @@ export function HomeClient({ content: homeContent }: { content: HomeContent }) {
               cursor: bookCoverOpen ? 'zoom-out' : 'zoom-in',
             }}
           >
-            <img
+            <img loading="lazy" decoding="async"
               src={homeContent.book.cover.src}
               alt={homeContent.book.cover.alt}
               style={{

@@ -244,7 +244,7 @@ export function TemporadaClient({ content: c }: { content: TemporadaContent }) {
           <div className="tp-aves">
             {c.natureza.fotos.filter((f) => f.src).map((f, i) => (
               <figure key={i} style={{ margin: 0 }}>
-                <img src={f.src} alt={f.alt} className="tp-foto" onClick={() => abrir(c.natureza.fotos, i)}
+                <img loading="lazy" decoding="async" src={f.src} alt={f.alt} className="tp-foto" onClick={() => abrir(c.natureza.fotos, i)}
                      style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', objectPosition: `${f.enquadramento || '50%'} center`, display: 'block', borderRadius: '6px' }} />
                 <figcaption style={{ fontSize: '12px', opacity: 0.85, marginTop: '6px', textAlign: 'center' }}>{f.alt}</figcaption>
               </figure>
@@ -277,7 +277,7 @@ export function TemporadaClient({ content: c }: { content: TemporadaContent }) {
         <h2 style={H2}>{c.galeria.title}</h2>
         <div className="tp-scroll tp-galeria">
           {c.galeria.images.map((img, i) => (
-            <img key={i} src={img.src} alt={img.alt} className="tp-foto" onClick={() => abrir(c.galeria.images, i)}
+            <img loading="lazy" decoding="async" key={i} src={img.src} alt={img.alt} className="tp-foto" onClick={() => abrir(c.galeria.images, i)}
                  style={{ width: '100%', aspectRatio: '1/1', objectFit: 'cover', display: 'block', borderRadius: '2px' }} />
           ))}
         </div>
@@ -288,7 +288,7 @@ export function TemporadaClient({ content: c }: { content: TemporadaContent }) {
             <div className="tp-scroll tp-fotos-quartos">
               {c.quartos.fotos.filter((f) => f.src).map((f, i) => (
                 <figure key={i} style={{ margin: 0 }}>
-                  <img src={f.src} alt={f.alt} className="tp-foto" onClick={() => abrir(c.quartos.fotos, i)}
+                  <img loading="lazy" decoding="async" src={f.src} alt={f.alt} className="tp-foto" onClick={() => abrir(c.quartos.fotos, i)}
                        style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block', borderRadius: '4px' }} />
                   <figcaption style={{ fontSize: '13px', opacity: 0.7, marginTop: '8px' }}>{f.alt}</figcaption>
                 </figure>
@@ -301,7 +301,7 @@ export function TemporadaClient({ content: c }: { content: TemporadaContent }) {
       {lightbox && (
         <div onClick={() => setLightbox(null)}
              style={{ position: 'fixed', inset: 0, background: 'rgba(20,18,17,0.94)', zIndex: 100, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '56px 16px', cursor: 'zoom-out' }}>
-          <img src={lightbox.imgs[lightbox.i].src} alt={lightbox.imgs[lightbox.i].alt}
+          <img loading="lazy" decoding="async" src={lightbox.imgs[lightbox.i].src} alt={lightbox.imgs[lightbox.i].alt}
                style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
           <button aria-label="Fechar" onClick={(e) => { e.stopPropagation(); setLightbox(null); }}
                   style={{ position: 'absolute', top: '16px', right: '16px', width: '44px', height: '44px', background: colors.bg, border: 'none', fontSize: '22px', cursor: 'pointer' }}>
@@ -396,7 +396,7 @@ export function TemporadaClient({ content: c }: { content: TemporadaContent }) {
           </div>
           {c.localizacao.image?.src && (
             <figure style={{ margin: 0 }}>
-              <img src={c.localizacao.image.src} alt={c.localizacao.image.alt}
+              <img loading="lazy" decoding="async" src={c.localizacao.image.src} alt={c.localizacao.image.alt}
                    style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block', borderRadius: '6px' }} />
               <figcaption style={{ fontSize: '13px', opacity: 0.7, marginTop: '8px' }}>{c.localizacao.image.alt}</figcaption>
             </figure>

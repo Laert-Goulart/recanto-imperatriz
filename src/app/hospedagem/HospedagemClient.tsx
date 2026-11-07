@@ -263,7 +263,7 @@ export function HospedagemClient({ content: hospedagemContent }: { content: Hosp
               }}
               onClick={() => setGaleriaOpenId(null)}
             >
-              <img
+              <img loading="lazy" decoding="async"
                 src={hospedagemContent.galeria.images[currentGaleriaIndex].src}
                 alt={hospedagemContent.galeria.images[currentGaleriaIndex].alt}
                 style={{
@@ -302,7 +302,7 @@ export function HospedagemClient({ content: hospedagemContent }: { content: Hosp
                 cursor: 'zoom-in',
               }}
             >
-              <img
+              <img loading="lazy" decoding="async"
                 src={item.src}
                 alt={item.alt}
                 style={{

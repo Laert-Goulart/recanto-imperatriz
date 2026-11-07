@@ -13,6 +13,10 @@ const archivo = Archivo({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  // Código do Google Search Console (variável NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION na Vercel)
+  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION && {
+    verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION },
+  }),
   title: 'Recanto da Imperatriz | Eventos Corporativos em Petrópolis',
   description:
     'Espaço exclusivo em Petrópolis para reuniões, treinamentos, imersões e confraternizações empresariais. Ambiente de casa, estrutura de trabalho e natureza.',
@@ -21,7 +25,7 @@ export const metadata: Metadata = {
     description:
       'Espaço exclusivo em Petrópolis para reuniões, treinamentos, imersões e confraternizações empresariais.',
     url: SITE_URL,
-    images: [{ url: '/images/hero-fachada-externa.png' }],
+    images: [{ url: '/og/recanto-og.jpg', width: 1200, height: 630 }],
     siteName: 'Recanto da Imperatriz',
     locale: 'pt_BR',
     type: 'website',
@@ -43,7 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             '@type': 'Organization',
             name: siteConfig.name,
             url: SITE_URL,
-            logo: `${SITE_URL}/images/logo-recanto-imperatriz.png`,
+            logo: `${SITE_URL}/images/webp/logo-recanto-imperatriz.webp`,
             email: siteConfig.email,
             telephone: `+${siteConfig.whatsapp}`,
             address: { '@type': 'PostalAddress', addressLocality: 'Petrópolis', addressRegion: 'RJ', addressCountry: 'BR' },

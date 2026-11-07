@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     siteName: 'Recanto da Imperatriz',
     locale: 'pt_BR',
     type: 'website',
-    images: [{ url: '/images/hero-fachada-externa.png' }],
+    images: [{ url: '/og/recanto-og.jpg', width: 1200, height: 630 }],
   },
 };
 

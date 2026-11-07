@@ -206,7 +206,7 @@ export function FaunaClient({ content: faunaContent }: { content: FaunaContent }
               }}
               onClick={() => setGaleriaOpenId(null)}
             >
-              <img
+              <img loading="lazy" decoding="async"
                 src={faunaContent.galeria[currentGaleriaIndex].src}
                 alt={faunaContent.galeria[currentGaleriaIndex].alt}
                 style={{
@@ -248,7 +248,7 @@ export function FaunaClient({ content: faunaContent }: { content: FaunaContent }
                 cursor: 'zoom-in',
               }}
             >
-              <img
+              <img loading="lazy" decoding="async"
                 src={item.src}
                 alt={item.alt}
                 style={{

@@ -4,7 +4,7 @@ export const eventosContent = {
     title: 'Hub único para eventos corporativos em Petrópolis',
     description: 'Reuniões, treinamentos, imersões e confraternizações — todos os formatos em um só lugar.',
     image: {
-      src: '/images/eventos-hero-varanda.png',
+      src: '/images/webp/eventos-hero-varanda.webp',
       alt: 'Varanda com vista para os eventos',
     },
   },
@@ -36,11 +36,11 @@ export const eventosContent = {
     tag: 'AMBIENTES',
     title: 'Espaços para cada tipo de encontro',
     images: [
-      { src: '/images/hero-fachada-externa.png', alt: 'Fachada externa' },
-      { src: '/images/hero-trilha-flores.png', alt: 'Trilha com flores' },
-      { src: '/images/hero-casa-hortensias.png', alt: 'Casa com hortênsias' },
-      { src: '/images/experiencia-areas-comuns.png', alt: 'Áreas comuns' },
-      { src: '/images/hero-cachoeira-poco.png', alt: 'Cachoeira e poço' },
+      { src: '/images/webp/hero-fachada-externa.webp', alt: 'Fachada externa' },
+      { src: '/images/webp/hero-trilha-flores.webp', alt: 'Trilha com flores' },
+      { src: '/images/webp/hero-casa-hortensias.webp', alt: 'Casa com hortênsias' },
+      { src: '/images/webp/experiencia-areas-comuns.webp', alt: 'Áreas comuns' },
+      { src: '/images/webp/hero-cachoeira-poco.webp', alt: 'Cachoeira e poço' },
     ],
   },
 

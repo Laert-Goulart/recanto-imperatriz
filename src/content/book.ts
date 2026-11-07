@@ -4,7 +4,7 @@ export const bookContent = {
     title: 'Material completo sobre os espaços e formatos',
     description: 'Baixe o e-book com fotos, informações técnicas e roteiro de visita.',
     image: {
-      src: '/images/book-hero-jardim-hortensias.png',
+      src: '/images/webp/book-hero-jardim-hortensias.webp',
       alt: 'Jardim com hortênsias',
     },
   },
@@ -34,7 +34,7 @@ export const bookContent = {
   },
 
   cover: {
-    src: '/images/book-capa-ebook.png',
+    src: '/images/webp/book-capa-ebook.webp',
     alt: 'Capa do Book Corporativo',
   },
 

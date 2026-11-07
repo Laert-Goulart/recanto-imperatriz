@@ -117,7 +117,7 @@ export function BlockRenderer({ block }: { block: Block }) {
         <h2 style={{ fontSize: '30px', margin: '12px 0 24px' }}>{block.title}</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px' }}>
           {block.images.map((img, i) => (
-            <img
+            <img loading="lazy" decoding="async"
               key={i}
               src={img.src}
               alt={img.alt}

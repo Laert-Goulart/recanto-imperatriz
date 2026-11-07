@@ -171,7 +171,7 @@ export function LocalizacaoClient({ content: localizacaoContent }: { content: Lo
             }}
             onClick={() => setMapaOpen(true)}
           >
-            <img
+            <img loading="lazy" decoding="async"
               src={localizacaoContent.mapa.src}
               alt={localizacaoContent.mapa.alt}
               style={{
@@ -198,7 +198,7 @@ export function LocalizacaoClient({ content: localizacaoContent }: { content: Lo
               cursor: 'zoom-out',
             }}
           >
-            <img
+            <img loading="lazy" decoding="async"
               src={localizacaoContent.mapa.src}
               alt={localizacaoContent.mapa.alt}
               style={{

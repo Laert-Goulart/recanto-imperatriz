@@ -4,7 +4,7 @@ export const localizacaoContent = {
     title: 'Petrópolis, Região Serrana do Rio de Janeiro',
     description: 'Perto o suficiente para caber na agenda, longe o bastante para sair da rotina.',
     image: {
-      src: '/images/loc-hero-petropolis.jpg',
+      src: '/images/webp/loc-hero-petropolis.webp',
       alt: 'Vista de Petrópolis',
     },
   },
@@ -33,7 +33,7 @@ export const localizacaoContent = {
   ],
 
   mapa: {
-    src: '/images/mapa-acesso.png',
+    src: '/images/webp/mapa-acesso.webp',
     alt: 'Mapa de acesso ao Recanto da Imperatriz',
   },
 
