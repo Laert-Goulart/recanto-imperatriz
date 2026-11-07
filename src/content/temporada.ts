@@ -38,6 +38,20 @@ export const temporadaContent = {
     linkTexto: 'Ler as avaliações no Airbnb',
   },
 
+  // Trechos reais de avaliações publicadas no Airbnb
+  depoimentos: {
+    tag: 'O QUE DIZEM OS HÓSPEDES',
+    title: 'Avaliações de quem já se hospedou',
+    itens: [
+      { nome: 'Marcos', data: 'Dezembro de 2025', texto: 'A casa é muito espaçosa e muito bem mobiliada, a natureza ao redor foi uma atração à parte. A casa muito limpa e bem organizada, a anfitriã muito atenciosa e sempre disponível.' },
+      { nome: 'Vinicius', data: 'Julho de 2025', texto: 'Simplesmente um achado! Nossa estadia foi perfeita do início ao fim.' },
+      { nome: 'Luiza', data: 'Julho de 2025', texto: 'Pelas fotos não se tem dimensão do tamanho da casa. São 3 pavimentos, sendo 1 área de lazer, o que permite descanso e curtição para o grupo.' },
+      { nome: 'Brenda', data: 'Maio de 2025', texto: 'Nossa estadia no Recanto da Imperatriz foi sem dúvidas um final de semana maravilhoso.' },
+      { nome: 'Paulo', data: 'Abril de 2025', texto: 'O Recanto da Imperatriz é um local mágico! Cheio de história, muito bem cuidado. Victoria nos recebeu com muito zelo, nos mostrou a casa que é imensa!' },
+      { nome: 'Rosana', data: 'Março de 2025', texto: 'A casa superou nossas expectativas. Passamos um carnaval em família, maravilhoso, cheio de paz e envoltos por uma exuberante natureza.' },
+    ],
+  },
+
   diferenciais: {
     tag: 'A CASA',
     title: 'O que torna a estadia especial',
@@ -63,6 +77,41 @@ export const temporadaContent = {
       { nome: 'Quarto 3', camas: '1 cama de casal' },
       { nome: 'Quarto 4', camas: '1 cama de casal e 1 de solteiro' },
       { nome: 'Quarto 5', camas: '1 cama de solteiro' },
+    ],
+    fotos: [
+      { src: '/images/quarto-suite-cama-ferro.jpg', alt: 'Suíte com cama de casal' },
+      { src: '/images/quarto-suite-banheiro.jpg', alt: 'Banheiro da suíte' },
+      { src: '/images/quarto-sotao-sala.jpg', alt: 'Sala de estar no sótão' },
+      { src: '/images/experiencia-areas-comuns.png', alt: 'Sala com lareira e bar' },
+    ],
+  },
+
+  regras: {
+    tag: 'ANTES DE RESERVAR',
+    title: 'O que você precisa saber',
+    horarios: [
+      { label: 'Check-in', valor: '15:00 às 19:00' },
+      { label: 'Check-out', valor: 'até 11:00' },
+    ],
+    itens: [
+      { titulo: 'Até 10 hóspedes para pernoite', detalhe: '' },
+      { titulo: 'Não são permitidos animais de estimação', detalhe: '' },
+      { titulo: 'Proibido fumar', detalhe: 'Inclusive vapes e cigarros eletrônicos' },
+      { titulo: 'Horário de silêncio', detalhe: 'Das 23:00 às 07:00' },
+      { titulo: 'Fotografia comercial não permitida', detalhe: 'Inclusive filmagens comerciais' },
+    ],
+    cancelamento: 'A política de cancelamento depende das datas escolhidas e aparece no Airbnb ao selecionar o período.',
+  },
+
+  anfitria: {
+    tag: 'SUA ANFITRIÃ',
+    nome: 'Maria Victória',
+    descricao: 'Empresária, recebe hóspedes no Recanto há 2 anos. "Eu amo conversar e trocar experiências, amo ver as pessoas ao meu redor felizes!"',
+    stats: [
+      { valor: '5,0 ★', label: 'nota como anfitriã' },
+      { valor: '14', label: 'avaliações' },
+      { valor: '100%', label: 'taxa de resposta' },
+      { valor: 'Poucas horas', label: 'tempo de resposta' },
     ],
   },
 
@@ -96,8 +145,10 @@ export const temporadaContent = {
     { q: 'Como faço a reserva?', a: 'Pelo Airbnb, com pagamento seguro, ou falando direto com a anfitriã pelo WhatsApp.' },
     { q: 'Quantas pessoas a casa recebe?', a: 'Até 10 hóspedes, em 5 quartos com 6 camas e 7 banheiros.' },
     { q: 'A casa fica inteira para o meu grupo?', a: 'Sim. A casa é reservada exclusivamente para o seu grupo.' },
+    { q: 'Quais são os horários de check-in e check-out?', a: 'Check-in das 15:00 às 19:00 e check-out até as 11:00.' },
+    { q: 'Posso levar meu animal de estimação?', a: 'Não. A casa não aceita animais de estimação.' },
     { q: 'Tem estacionamento?', a: 'Sim, com vagas no local.' },
-    { q: 'Posso fazer uma comemoração na casa?', a: 'A casa tem salão de festas. Fale com a anfitriã pelo WhatsApp para combinar os detalhes.' },
+    { q: 'Posso fazer uma comemoração na casa?', a: 'A casa tem salão de festas. O horário de silêncio é das 23:00 às 07:00. Fale com a anfitriã pelo WhatsApp para combinar os detalhes.' },
     { q: 'Onde fica exatamente?', a: 'Em Petrópolis, a 15 minutos do centro histórico. O endereço completo é enviado após a reserva.' },
   ],
 

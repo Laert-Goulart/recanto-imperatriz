@@ -32,9 +32,11 @@ function Star({ size = 16 }: { size?: number }) {
 }
 
 export function TemporadaClient({ content: c }: { content: TemporadaContent }) {
-  const [fotoAberta, setFotoAberta] = useState<number | null>(null);
+  const [lightbox, setLightbox] = useState<{ imgs: { src: string; alt: string }[]; i: number } | null>(null);
   const waLink = `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(c.cta.whatsappMensagem)}`;
-  const total = c.galeria.images.length;
+  const abrir = (imgs: { src: string; alt: string }[], i: number) => setLightbox({ imgs, i });
+  const passo = (dir: number) =>
+    setLightbox((lb) => (lb ? { ...lb, i: (lb.i + dir + lb.imgs.length) % lb.imgs.length } : lb));
 
   const btnAirbnb: React.CSSProperties = {
     display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 22px', background: '#fff', color: colors.text,
@@ -57,6 +59,15 @@ export function TemporadaClient({ content: c }: { content: TemporadaContent }) {
         .tp-quartos { grid-template-columns: repeat(5, 1fr); }
         .tp-galeria { grid-template-columns: repeat(4, 1fr); gap: 12px; }
         .tp-loc { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .tp-dep { grid-template-columns: repeat(3, 1fr); }
+        .tp-fotos-quartos { grid-template-columns: repeat(4, 1fr); }
+        .tp-regras { display: grid; grid-template-columns: minmax(220px, 0.6fr) 1.4fr; gap: 32px; }
+        .tp-anfitria { display: grid; grid-template-columns: minmax(260px, 0.8fr) 1.4fr; gap: 28px; align-items: center; }
+        @media (max-width: 900px) {
+          .tp-dep { grid-template-columns: repeat(2, 1fr); }
+          .tp-fotos-quartos { grid-template-columns: repeat(2, 1fr); }
+          .tp-regras, .tp-anfitria { grid-template-columns: 1fr; gap: 20px; }
+        }
         @media (max-width: 900px) {
           .tp-prova { grid-template-columns: 1fr; gap: 24px; }
           .tp-dif { grid-template-columns: repeat(2, 1fr); }
@@ -74,6 +85,8 @@ export function TemporadaClient({ content: c }: { content: TemporadaContent }) {
           }
           .tp-scroll > * { flex: 0 0 70%; min-width: 0; scroll-snap-align: start; }
           .tp-galeria > * { flex: 0 0 45%; }
+          .tp-dep > * { flex: 0 0 82%; }
+          .tp-fotos-quartos > * { flex: 0 0 72%; }
         }
         .tp-foto { cursor: zoom-in; transition: opacity .2s ease; }
         .tp-foto:hover { opacity: .9; }
@@ -168,7 +181,34 @@ export function TemporadaClient({ content: c }: { content: TemporadaContent }) {
         </div>
       </section>
 
-      {DIVIDER}
+      {/* DEPOIMENTOS */}
+      {c.depoimentos.itens.length > 0 && (
+        <section style={{ background: colors.surface }}>
+          <div style={SECTION}>
+            <span style={TAG}>{c.depoimentos.tag}</span>
+            <h2 style={H2}>{c.depoimentos.title}</h2>
+            <div className="tp-scroll tp-dep">
+              {c.depoimentos.itens.filter((d) => d.texto).map((d, i) => (
+                <figure key={i} style={{ margin: 0, background: '#fff', borderRadius: '6px', padding: '22px', display: 'flex', flexDirection: 'column' }}>
+                  <div style={{ display: 'flex', gap: '3px', marginBottom: '12px' }}>
+                    {[0, 1, 2, 3, 4].map((s) => <Star key={s} size={14} />)}
+                  </div>
+                  <blockquote style={{ margin: 0, fontSize: '15px', lineHeight: 1.6, flex: 1 }}>“{d.texto}”</blockquote>
+                  <figcaption style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '18px' }}>
+                    <span style={{ width: '38px', height: '38px', borderRadius: '50%', background: colors.accent, color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700 }}>
+                      {d.nome.charAt(0)}
+                    </span>
+                    <span>
+                      <b style={{ display: 'block', fontSize: '14px' }}>{d.nome}</b>
+                      <span style={{ fontSize: '12px', opacity: 0.65 }}>{d.data} · via Airbnb</span>
+                    </span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* DIFERENCIAIS */}
       <section style={SECTION}>
@@ -201,6 +241,17 @@ export function TemporadaClient({ content: c }: { content: TemporadaContent }) {
             </div>
           ))}
         </div>
+        {c.quartos.fotos.length > 0 && (
+          <div className="tp-scroll tp-fotos-quartos" style={{ marginTop: '20px' }}>
+            {c.quartos.fotos.filter((f) => f.src).map((f, i) => (
+              <figure key={i} style={{ margin: 0 }}>
+                <img src={f.src} alt={f.alt} className="tp-foto" onClick={() => abrir(c.quartos.fotos, i)}
+                     style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block', borderRadius: '4px' }} />
+                <figcaption style={{ fontSize: '13px', opacity: 0.7, marginTop: '8px' }}>{f.alt}</figcaption>
+              </figure>
+            ))}
+          </div>
+        )}
       </section>
 
       {DIVIDER}
@@ -211,26 +262,26 @@ export function TemporadaClient({ content: c }: { content: TemporadaContent }) {
         <h2 style={H2}>{c.galeria.title}</h2>
         <div className="tp-scroll tp-galeria">
           {c.galeria.images.map((img, i) => (
-            <img key={i} src={img.src} alt={img.alt} className="tp-foto" onClick={() => setFotoAberta(i)}
+            <img key={i} src={img.src} alt={img.alt} className="tp-foto" onClick={() => abrir(c.galeria.images, i)}
                  style={{ width: '100%', aspectRatio: '1/1', objectFit: 'cover', display: 'block', borderRadius: '2px' }} />
           ))}
         </div>
       </section>
 
-      {fotoAberta !== null && (
-        <div onClick={() => setFotoAberta(null)}
+      {lightbox && (
+        <div onClick={() => setLightbox(null)}
              style={{ position: 'fixed', inset: 0, background: 'rgba(20,18,17,0.94)', zIndex: 100, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '56px 16px', cursor: 'zoom-out' }}>
-          <img src={c.galeria.images[fotoAberta].src} alt={c.galeria.images[fotoAberta].alt}
+          <img src={lightbox.imgs[lightbox.i].src} alt={lightbox.imgs[lightbox.i].alt}
                style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
-          <button aria-label="Fechar" onClick={(e) => { e.stopPropagation(); setFotoAberta(null); }}
+          <button aria-label="Fechar" onClick={(e) => { e.stopPropagation(); setLightbox(null); }}
                   style={{ position: 'absolute', top: '16px', right: '16px', width: '44px', height: '44px', background: colors.bg, border: 'none', fontSize: '22px', cursor: 'pointer' }}>
             ×
           </button>
-          <button aria-label="Foto anterior" onClick={(e) => { e.stopPropagation(); setFotoAberta((fotoAberta - 1 + total) % total); }}
+          <button aria-label="Foto anterior" onClick={(e) => { e.stopPropagation(); passo(-1); }}
                   style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', width: '44px', height: '44px', background: 'rgba(20,18,17,0.7)', color: '#fff', border: 'none', fontSize: '24px', cursor: 'pointer' }}>
             ‹
           </button>
-          <button aria-label="Próxima foto" onClick={(e) => { e.stopPropagation(); setFotoAberta((fotoAberta + 1) % total); }}
+          <button aria-label="Próxima foto" onClick={(e) => { e.stopPropagation(); passo(1); }}
                   style={{ position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)', width: '44px', height: '44px', background: 'rgba(20,18,17,0.7)', color: '#fff', border: 'none', fontSize: '24px', cursor: 'pointer' }}>
             ›
           </button>
@@ -238,6 +289,64 @@ export function TemporadaClient({ content: c }: { content: TemporadaContent }) {
       )}
 
       {DIVIDER}
+
+      {/* REGRAS */}
+      <section style={SECTION}>
+        <span style={TAG}>{c.regras.tag}</span>
+        <h2 style={H2}>{c.regras.title}</h2>
+        <div className="tp-regras">
+          <div style={{ display: 'grid', gap: '12px', alignContent: 'start' }}>
+            {c.regras.horarios.map((h, i) => (
+              <div key={i} style={{ background: colors.accent, color: '#fff', borderRadius: '6px', padding: '18px 20px' }}>
+                <div style={{ fontSize: '13px', opacity: 0.8, textTransform: 'uppercase', letterSpacing: '0.04em' }}>{h.label}</div>
+                <div style={{ fontSize: '24px', fontWeight: 700, marginTop: '4px' }}>{h.valor}</div>
+              </div>
+            ))}
+          </div>
+          <div>
+            {c.regras.itens.map((r, i) => (
+              <div key={i} style={{ display: 'flex', gap: '12px', padding: '14px 0', borderTop: i ? `1px solid ${colors.divider}` : 'none' }}>
+                <span style={{ width: '8px', height: '8px', marginTop: '7px', flex: 'none', background: colors.accent2, transform: 'rotate(45deg)' }} />
+                <div>
+                  <div style={{ fontWeight: 700, fontSize: '15px' }}>{r.titulo}</div>
+                  {r.detalhe && <div style={{ fontSize: '13px', opacity: 0.7 }}>{r.detalhe}</div>}
+                </div>
+              </div>
+            ))}
+            {c.regras.cancelamento && (
+              <p style={{ fontSize: '13px', opacity: 0.7, marginTop: '12px', paddingTop: '14px', borderTop: `1px solid ${colors.divider}` }}>
+                <b>Cancelamento:</b> {c.regras.cancelamento}
+              </p>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* ANFITRIÃ */}
+      <section style={{ background: colors.surface }}>
+        <div style={SECTION}>
+          <div className="tp-anfitria">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
+              <span style={{ width: '72px', height: '72px', flex: 'none', borderRadius: '50%', background: colors.accent, color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '28px', fontWeight: 700 }}>
+                {c.anfitria.nome.charAt(0)}
+              </span>
+              <div>
+                <span style={{ ...TAG, marginBottom: '2px' }}>{c.anfitria.tag}</span>
+                <div style={{ fontSize: '26px', fontWeight: 700 }}>{c.anfitria.nome}</div>
+              </div>
+            </div>
+            <p style={{ fontSize: '15px', lineHeight: 1.6, opacity: 0.85, margin: 0 }}>{c.anfitria.descricao}</p>
+          </div>
+          <div className="tp-numeros" style={{ marginTop: '24px', background: '#fff', borderRadius: '6px' }}>
+            {c.anfitria.stats.map((s, i) => (
+              <div key={i} style={{ padding: '18px 12px', textAlign: 'center' }}>
+                <div style={{ fontSize: '22px', fontWeight: 700, color: colors.accent }}>{s.valor}</div>
+                <div style={{ fontSize: '12px', opacity: 0.7, marginTop: '4px' }}>{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* LOCALIZAÇÃO */}
       <section style={SECTION}>
