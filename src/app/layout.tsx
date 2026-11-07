@@ -13,10 +13,10 @@ const archivo = Archivo({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  // Código do Google Search Console (variável NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION na Vercel)
-  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION && {
-    verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION },
-  }),
+  // Código do Google Search Console (público por natureza; a variável na Vercel, se existir, tem prioridade)
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || 'ebYq9dgMwQ2WDDG4iFXKl8SiftoNX_TybyWi',
+  },
   title: 'Recanto da Imperatriz | Eventos Corporativos em Petrópolis',
   description:
     'Espaço exclusivo em Petrópolis para reuniões, treinamentos, imersões e confraternizações empresariais. Ambiente de casa, estrutura de trabalho e natureza.',
