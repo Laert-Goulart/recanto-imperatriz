@@ -51,5 +51,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: data ? `${data.title} | Recanto da Imperatriz` : 'Recanto da Imperatriz',
     description: data?.meta_description || '',
+    alternates: { canonical: `/pagina/${slug}` },
   };
 }

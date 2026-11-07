@@ -6,7 +6,7 @@ const BASE = 'https://www.recantodaimperatriz.com.br';
 export const dynamic = 'force-dynamic';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const fixed = ['', '/temporada', '/eventos', '/book', '/fauna', '/localizacao'].map((p) => ({
+  const fixed = ['', '/temporada', '/eventos', '/book', '/fauna', '/localizacao', '/privacidade'].map((p) => ({
     url: `${BASE}${p}`,
     lastModified: new Date(),
   }));

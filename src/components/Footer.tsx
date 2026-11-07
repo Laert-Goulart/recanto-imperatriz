@@ -77,6 +77,9 @@ export function Footer() {
             {siteConfig.email} · {siteConfig.whatsappFormatted}
           </span>
         </div>
+        <div style={{ marginTop: '10px', fontSize: '12px', textAlign: 'center' }}>
+          <Link href="/privacidade" style={{ color: colors.bg, opacity: 0.75 }}>Política de Privacidade</Link>
+        </div>
       </div>
     </footer>
   );

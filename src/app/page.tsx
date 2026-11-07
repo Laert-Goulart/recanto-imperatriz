@@ -1,4 +1,9 @@
+import type { Metadata } from 'next';
 import { HomeClient } from './HomeClient';
+
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+};
 import { getPageContent } from '@/lib/pageContent';
 import { homeContent, HomeContent } from '@/content/home';
 
