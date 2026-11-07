@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async redirects() {
+    // A antiga página de hospedagem foi substituída pela página de temporada
+    return [{ source: '/hospedagem', destination: '/temporada', permanent: true }];
+  },
 };
 
 export default nextConfig;

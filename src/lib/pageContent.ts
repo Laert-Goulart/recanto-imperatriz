@@ -44,7 +44,7 @@ export async function getPageContent<T>(slug: string, fallback: T): Promise<T> {
 export const FIXED_PAGES: { slug: string; label: string }[] = [
   { slug: 'home', label: 'Home' },
   { slug: 'eventos', label: 'Eventos Corporativos' },
-  { slug: 'hospedagem', label: 'Hospedagem' },
+  { slug: 'temporada', label: 'Hospedagem (Temporada)' },
   { slug: 'book', label: 'Book Corporativo' },
   { slug: 'fauna', label: 'Espécies Nativas' },
   { slug: 'localizacao', label: 'Localização' },

@@ -88,7 +88,7 @@ export function Header() {
           className="nav-links-desktop"
         >
           <NavLink href="/eventos">Eventos Corporativos</NavLink>
-          <NavLink href="/hospedagem">Hospedagem</NavLink>
+          <NavLink href="/temporada">Hospedagem</NavLink>
           <NavLink href="/book">Book Corporativo</NavLink>
           <NavLink href="/fauna">Espécies Nativas</NavLink>
           <NavLink href="/localizacao">Localização</NavLink>
@@ -176,7 +176,7 @@ export function Header() {
               <MobileNavLink href="/eventos" onClick={() => setMobileMenuOpen(false)}>
                 Eventos Corporativos
               </MobileNavLink>
-              <MobileNavLink href="/hospedagem" onClick={() => setMobileMenuOpen(false)}>
+              <MobileNavLink href="/temporada" onClick={() => setMobileMenuOpen(false)}>
                 Hospedagem
               </MobileNavLink>
               <MobileNavLink href="/book" onClick={() => setMobileMenuOpen(false)}>

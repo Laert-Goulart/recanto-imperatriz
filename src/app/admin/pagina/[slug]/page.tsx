@@ -4,7 +4,7 @@ import { PageEditor } from '@/components/admin/PageEditor';
 
 import { homeContent } from '@/content/home';
 import { eventosContent } from '@/content/eventos';
-import { hospedagemContent } from '@/content/hospedagem';
+import { temporadaContent } from '@/content/temporada';
 import { bookContent } from '@/content/book';
 import { faunaContent } from '@/content/fauna';
 import { localizacaoContent } from '@/content/localizacao';
@@ -12,7 +12,7 @@ import { localizacaoContent } from '@/content/localizacao';
 const FALLBACKS: Record<string, Record<string, unknown>> = {
   home: homeContent,
   eventos: eventosContent,
-  hospedagem: hospedagemContent,
+  temporada: temporadaContent,
   book: bookContent,
   fauna: faunaContent,
   localizacao: localizacaoContent,

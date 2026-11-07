@@ -357,7 +357,7 @@ export function HomeClient({ content: homeContent }: { content: HomeContent }) {
           {homeContent.formatos.map((formato, i) => (
             <a
               key={i}
-              href={i === 4 ? '/hospedagem' : '#contato'}
+              href={i === 4 ? '/temporada' : '#contato'}
               style={{
                 textDecoration: 'none',
                 color: 'inherit',
