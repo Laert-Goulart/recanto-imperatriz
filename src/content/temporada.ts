@@ -70,6 +70,7 @@ export const temporadaContent = {
   quartos: {
     tag: 'QUARTOS',
     title: 'Onde todos dormem bem',
+    // As fotos abaixo aparecem na galeria, logo após as fotos da casa
     description: 'Suítes com varanda e vista para o verde e quartos charmosos no sótão.',
     itens: [
       { nome: 'Quarto 1', camas: '1 cama king' },
@@ -127,7 +128,24 @@ export const temporadaContent = {
       { src: '/images/hero-trilha-flores.png', alt: 'Trilha com azaleias' },
       { src: '/images/hero-jardins-sitio.png', alt: 'Jardins do sítio' },
       { src: '/images/hero-cachoeira-jardim.png', alt: 'Jardim com cachoeira' },
+      { src: '/images/hospedagem-hero-varanda-casa.png', alt: 'Varanda e fachada da casa' },
+      { src: '/images/eventos-hero-varanda.png', alt: 'Varanda com escadaria' },
     ],
+    tituloQuartos: 'Quartos e ambientes internos',
+  },
+
+  natureza: {
+    tag: 'RESERVA AMBIENTAL',
+    title: 'Acorde com o canto dos pássaros',
+    description:
+      'A casa fica dentro de uma área de Mata Atlântica preservada. Saíras, sabiás, araçaris e outras espécies nativas fazem parte da paisagem de quem se hospeda no Recanto.',
+    image: { src: '/images/ff-hero-ponte-jardim.png', alt: 'Lago com ponte cercado pela mata' },
+    fotos: [
+      { src: '/images/fauna-4-saira-sete-cores.jpeg', alt: 'Saíra-sete-cores' },
+      { src: '/images/fauna-10-sabia-laranjeira.jpeg', alt: 'Sabiá-laranjeira' },
+      { src: '/images/fauna-3-arassaris.jpeg', alt: 'Araçaris' },
+    ],
+    linkTexto: 'Conheça as espécies nativas',
   },
 
   localizacao: {
@@ -139,6 +157,7 @@ export const temporadaContent = {
       { valor: '1h30', label: 'do Rio de Janeiro, aproximadamente' },
     ],
     observacao: 'O endereço completo e o roteiro de chegada são enviados após a confirmação da reserva.',
+    image: { src: '/images/loc-hero-petropolis.jpg', alt: 'Petrópolis, a Cidade Imperial' },
   },
 
   faq: [

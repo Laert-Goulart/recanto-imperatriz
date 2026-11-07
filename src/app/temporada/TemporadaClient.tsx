@@ -57,7 +57,11 @@ export function TemporadaClient({ content: c }: { content: TemporadaContent }) {
         .tp-scroll { display: grid; gap: 16px; }
         .tp-dif { grid-template-columns: repeat(4, 1fr); }
         .tp-quartos { grid-template-columns: repeat(5, 1fr); }
-        .tp-galeria { grid-template-columns: repeat(4, 1fr); gap: 12px; }
+        .tp-galeria { grid-template-columns: repeat(5, 1fr); gap: 12px; }
+        .tp-natureza { position: relative; min-height: 480px; display: flex; align-items: center; overflow: hidden; }
+        .tp-nat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .tp-aves { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .tp-loc-wrap { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: center; }
         .tp-loc { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
         .tp-dep { grid-template-columns: repeat(3, 1fr); }
         .tp-fotos-quartos { grid-template-columns: repeat(4, 1fr); }
@@ -66,7 +70,8 @@ export function TemporadaClient({ content: c }: { content: TemporadaContent }) {
         @media (max-width: 900px) {
           .tp-dep { grid-template-columns: repeat(2, 1fr); }
           .tp-fotos-quartos { grid-template-columns: repeat(2, 1fr); }
-          .tp-regras, .tp-anfitria { grid-template-columns: 1fr; gap: 20px; }
+          .tp-regras, .tp-anfitria, .tp-nat-grid, .tp-loc-wrap { grid-template-columns: 1fr; gap: 20px; }
+          .tp-galeria { grid-template-columns: repeat(3, 1fr); }
         }
         @media (max-width: 900px) {
           .tp-prova { grid-template-columns: 1fr; gap: 24px; }
@@ -225,7 +230,28 @@ export function TemporadaClient({ content: c }: { content: TemporadaContent }) {
         </div>
       </section>
 
-      {DIVIDER}
+      {/* NATUREZA */}
+      <section className="tp-natureza">
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${c.natureza.image.src})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(16,31,17,0.9), rgba(16,31,17,0.55))' }} />
+        <div className="tp-nat-grid" style={{ position: 'relative', zIndex: 2, maxWidth: '1180px', margin: '0 auto', padding: '64px clamp(20px, 5vw, 64px)', width: '100%', color: '#f3f2f2' }}>
+          <div>
+            <span style={{ ...TAG, opacity: 0.85 }}>{c.natureza.tag}</span>
+            <h2 style={{ ...H2, color: '#f3f2f2', margin: '8px 0 14px' }}>{c.natureza.title}</h2>
+            <p style={{ fontSize: '16px', lineHeight: 1.65, opacity: 0.9, margin: '0 0 20px', maxWidth: '48ch' }}>{c.natureza.description}</p>
+            <a href="/fauna" style={{ color: colors.accent2, fontWeight: 700, fontSize: '14px' }}>{c.natureza.linkTexto} →</a>
+          </div>
+          <div className="tp-aves">
+            {c.natureza.fotos.filter((f) => f.src).map((f, i) => (
+              <figure key={i} style={{ margin: 0 }}>
+                <img src={f.src} alt={f.alt} className="tp-foto" onClick={() => abrir(c.natureza.fotos, i)}
+                     style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', display: 'block', borderRadius: '6px' }} />
+                <figcaption style={{ fontSize: '12px', opacity: 0.85, marginTop: '6px', textAlign: 'center' }}>{f.alt}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* QUARTOS */}
       <section style={SECTION}>
@@ -241,17 +267,6 @@ export function TemporadaClient({ content: c }: { content: TemporadaContent }) {
             </div>
           ))}
         </div>
-        {c.quartos.fotos.length > 0 && (
-          <div className="tp-scroll tp-fotos-quartos" style={{ marginTop: '20px' }}>
-            {c.quartos.fotos.filter((f) => f.src).map((f, i) => (
-              <figure key={i} style={{ margin: 0 }}>
-                <img src={f.src} alt={f.alt} className="tp-foto" onClick={() => abrir(c.quartos.fotos, i)}
-                     style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block', borderRadius: '4px' }} />
-                <figcaption style={{ fontSize: '13px', opacity: 0.7, marginTop: '8px' }}>{f.alt}</figcaption>
-              </figure>
-            ))}
-          </div>
-        )}
       </section>
 
       {DIVIDER}
@@ -266,6 +281,21 @@ export function TemporadaClient({ content: c }: { content: TemporadaContent }) {
                  style={{ width: '100%', aspectRatio: '1/1', objectFit: 'cover', display: 'block', borderRadius: '2px' }} />
           ))}
         </div>
+
+        {c.quartos.fotos.length > 0 && (
+          <>
+            <h3 style={{ fontSize: '22px', fontWeight: 700, margin: '44px 0 18px' }}>{c.galeria.tituloQuartos}</h3>
+            <div className="tp-scroll tp-fotos-quartos">
+              {c.quartos.fotos.filter((f) => f.src).map((f, i) => (
+                <figure key={i} style={{ margin: 0 }}>
+                  <img src={f.src} alt={f.alt} className="tp-foto" onClick={() => abrir(c.quartos.fotos, i)}
+                       style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block', borderRadius: '4px' }} />
+                  <figcaption style={{ fontSize: '13px', opacity: 0.7, marginTop: '8px' }}>{f.alt}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </>
+        )}
       </section>
 
       {lightbox && (
@@ -352,15 +382,26 @@ export function TemporadaClient({ content: c }: { content: TemporadaContent }) {
       <section style={SECTION}>
         <span style={TAG}>{c.localizacao.tag}</span>
         <h2 style={H2}>{c.localizacao.title}</h2>
-        <div className="tp-loc">
-          {c.localizacao.itens.map((l, i) => (
-            <div key={i} style={{ borderTop: `2px solid ${colors.accent}`, paddingTop: '14px' }}>
-              <div style={{ fontSize: '28px', fontWeight: 700, color: colors.accent }}>{l.valor}</div>
-              <div style={{ fontSize: '14px', opacity: 0.8 }}>{l.label}</div>
+        <div className="tp-loc-wrap">
+          <div>
+            <div style={{ display: 'grid', gap: '18px' }}>
+              {c.localizacao.itens.map((l, i) => (
+                <div key={i} style={{ borderLeft: `3px solid ${colors.accent}`, paddingLeft: '14px' }}>
+                  <div style={{ fontSize: '28px', fontWeight: 700, color: colors.accent, lineHeight: 1.1 }}>{l.valor}</div>
+                  <div style={{ fontSize: '14px', opacity: 0.8 }}>{l.label}</div>
+                </div>
+              ))}
             </div>
-          ))}
+            {c.localizacao.observacao && <p style={{ fontSize: '14px', opacity: 0.7, marginTop: '22px' }}>{c.localizacao.observacao}</p>}
+          </div>
+          {c.localizacao.image?.src && (
+            <figure style={{ margin: 0 }}>
+              <img src={c.localizacao.image.src} alt={c.localizacao.image.alt}
+                   style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block', borderRadius: '6px' }} />
+              <figcaption style={{ fontSize: '13px', opacity: 0.7, marginTop: '8px' }}>{c.localizacao.image.alt}</figcaption>
+            </figure>
+          )}
         </div>
-        {c.localizacao.observacao && <p style={{ fontSize: '14px', opacity: 0.7, marginTop: '22px' }}>{c.localizacao.observacao}</p>}
       </section>
 
       {DIVIDER}
