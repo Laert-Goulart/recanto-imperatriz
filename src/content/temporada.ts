@@ -141,9 +141,10 @@ export const temporadaContent = {
       'A casa fica dentro de uma área de Mata Atlântica preservada. Saíras, sabiás, araçaris e outras espécies nativas fazem parte da paisagem de quem se hospeda no Recanto.',
     image: { src: '/images/ff-hero-ponte-jardim.png', alt: 'Lago com ponte cercado pela mata' },
     fotos: [
-      { src: '/images/fauna-4-saira-sete-cores.jpeg', alt: 'Saíra-sete-cores' },
-      { src: '/images/fauna-10-sabia-laranjeira.jpeg', alt: 'Sabiá-laranjeira' },
-      { src: '/images/fauna-3-arassaris.jpeg', alt: 'Araçaris' },
+      // enquadramento: posição horizontal do recorte (0% = esquerda, 100% = direita)
+      { src: '/images/fauna-4-saira-sete-cores.jpeg', alt: 'Saíra-sete-cores', enquadramento: '72%' },
+      { src: '/images/fauna-10-sabia-laranjeira.jpeg', alt: 'Sabiá-laranjeira', enquadramento: '74%' },
+      { src: '/images/fauna-3-arassaris.jpeg', alt: 'Araçaris', enquadramento: '64%' },
     ],
     linkTexto: 'Conheça as espécies nativas',
   },

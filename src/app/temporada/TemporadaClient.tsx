@@ -245,7 +245,7 @@ export function TemporadaClient({ content: c }: { content: TemporadaContent }) {
             {c.natureza.fotos.filter((f) => f.src).map((f, i) => (
               <figure key={i} style={{ margin: 0 }}>
                 <img src={f.src} alt={f.alt} className="tp-foto" onClick={() => abrir(c.natureza.fotos, i)}
-                     style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', display: 'block', borderRadius: '6px' }} />
+                     style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', objectPosition: `${f.enquadramento || '50%'} center`, display: 'block', borderRadius: '6px' }} />
                 <figcaption style={{ fontSize: '12px', opacity: 0.85, marginTop: '6px', textAlign: 'center' }}>{f.alt}</figcaption>
               </figure>
             ))}
