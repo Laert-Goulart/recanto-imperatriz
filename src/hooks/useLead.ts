@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Lead } from '@/lib/supabase';
+import { trackEvent } from '@/components/Analytics';
 
 export function useLead() {
   const [loading, setLoading] = useState(false);
@@ -24,6 +25,7 @@ export function useLead() {
         throw new Error(data.error || 'Erro ao enviar lead');
       }
 
+      trackEvent('generate_lead', { page: window.location.pathname, tipo_evento: lead.tipo_evento });
       onSuccess?.();
       return true;
     } catch (err) {

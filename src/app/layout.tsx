@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Archivo } from 'next/font/google';
 import './globals.css';
+import { Analytics } from '@/components/Analytics';
 
 const archivo = Archivo({
   subsets: ['latin'],
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className={archivo.className} style={{ margin: 0, lineHeight: '1.5' }}>
         {children}
+        <Analytics />
       </body>
     </html>
   );
