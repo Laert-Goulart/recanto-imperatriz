@@ -13,22 +13,22 @@ export const localizacaoContent = {
     {
       icon: '📍',
       title: 'Região',
-      description: 'Petrópolis é conhecida como "Cidade Imperial" e fica a apenas 60km da capital do Rio de Janeiro.',
+      description: 'Petrópolis, a Cidade Imperial, na Região Serrana do Rio de Janeiro, cercada pela Mata Atlântica.',
     },
     {
       icon: '🚗',
       title: 'Acesso',
-      description: 'Fácil acesso pela BR-116 ou pela BR-495. Tempo de deslocamento: aproximadamente 1h30 de carro.',
+      description: 'Pela BR-040 (Rio–Petrópolis), aproximadamente 1h30 de carro a partir do Rio de Janeiro. Estacionamento no local.',
     },
     {
       icon: '🏠',
       title: 'Endereço',
-      description: 'Rua Endereço Completo em Petrópolis, RJ. Detalhes e roteiro enviados após o primeiro contato.',
+      description: 'Petrópolis, Rio de Janeiro — a 15 minutos do centro histórico e 25 minutos de Itaipava. O endereço exato e o roteiro de chegada são enviados após a confirmação da reserva.',
     },
     {
       icon: '🔒',
       title: 'Privacidade',
-      description: 'Propriedade reservada e privatizada para suas reuniões e eventos.',
+      description: 'Casa inteira reservada só para o seu grupo, dentro de uma reserva ambiental.',
     },
   ],
 
