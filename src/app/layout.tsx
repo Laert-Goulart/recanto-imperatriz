@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   // Código do Google Search Console (público por natureza; a variável na Vercel, se existir, tem prioridade)
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || 'ebYq9dgMwQ2WDDG4iFXKl8SiftoNX_TybyWi',
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || 'ebYq9dgMwQ2WDDG4iFXKl8SiftoNX_TybyWiadcybS8',
   },
   title: 'Recanto da Imperatriz | Eventos Corporativos em Petrópolis',
   description:
