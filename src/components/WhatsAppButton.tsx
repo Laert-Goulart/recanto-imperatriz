@@ -26,7 +26,8 @@ export function WhatsAppButton({
         cursor: 'pointer',
         border: 'none',
         position: 'fixed',
-        bottom: '20px',
+        // em destaque fica acima da faixa de cookies (que ocupa ~56px no rodapé)
+        bottom: destaque ? '66px' : '20px',
         right: '20px',
         zIndex: 50,
         boxShadow: destaque ? '0 8px 24px rgba(0, 0, 0, 0.28)' : '0 10px 15px -3px rgba(0, 0, 0, 0.1)',

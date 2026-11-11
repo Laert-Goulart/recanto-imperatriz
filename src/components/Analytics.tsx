@@ -120,28 +120,29 @@ export function Analytics() {
           role="dialog"
           aria-label="Aviso de cookies"
           style={{
-            position: 'fixed', left: '12px', right: '12px', bottom: '12px', zIndex: 200, maxWidth: '760px', margin: '0 auto',
+            // Compacto: no celular não pode cobrir os botões de contato da primeira tela
+            position: 'fixed', left: '8px', right: '8px', bottom: '8px', zIndex: 200, maxWidth: '640px', margin: '0 auto',
             background: '#fff', color: colors.text, border: `1px solid ${colors.divider}`, borderRadius: '8px',
-            boxShadow: '0 10px 30px rgba(0,0,0,.18)', padding: '16px 18px', display: 'flex', gap: '14px',
-            alignItems: 'center', flexWrap: 'wrap', fontSize: '14px', lineHeight: 1.5,
+            boxShadow: '0 6px 20px rgba(0,0,0,.16)', padding: '8px 10px', display: 'flex', gap: '10px',
+            alignItems: 'center', fontSize: '12px', lineHeight: 1.35,
           }}
         >
-          <p style={{ margin: 0, flex: '1 1 320px' }}>
-            Usamos cookies para medir as visitas e melhorar nossos anúncios. Você pode aceitar ou recusar.{' '}
-            <Link href="/privacidade" style={{ color: colors.accent, fontWeight: 600 }}>Política de Privacidade</Link>
+          <p style={{ margin: 0, flex: '1 1 auto', minWidth: 0 }}>
+            Usamos cookies para medir visitas.{' '}
+            <Link href="/privacidade" style={{ color: colors.accent, fontWeight: 600 }}>Privacidade</Link>
           </p>
-          <div style={{ display: 'flex', gap: '8px' }}>
+          <div style={{ display: 'flex', gap: '6px', flex: 'none' }}>
             <button
               type="button"
               onClick={() => choose('denied')}
-              style={{ padding: '10px 16px', background: 'transparent', border: `1px solid ${colors.divider}`, borderRadius: '4px', cursor: 'pointer', fontSize: '14px', color: colors.text }}
+              style={{ padding: '7px 10px', background: 'transparent', border: `1px solid ${colors.divider}`, borderRadius: '4px', cursor: 'pointer', fontSize: '12px', color: colors.text }}
             >
               Recusar
             </button>
             <button
               type="button"
               onClick={() => choose('granted')}
-              style={{ padding: '10px 18px', background: colors.accent, color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer', fontSize: '14px', fontWeight: 600 }}
+              style={{ padding: '7px 12px', background: colors.accent, color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer', fontSize: '12px', fontWeight: 600 }}
             >
               Aceitar
             </button>

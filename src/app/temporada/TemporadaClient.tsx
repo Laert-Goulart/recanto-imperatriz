@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
-import { BackToTopButton } from '@/components/BackToTopButton';
 import { AmenidadeIcon } from '@/components/AmenidadeIcon';
 import type { TemporadaContent } from '@/content/temporada';
 import { siteConfig, colors } from '@/content/config';
@@ -439,7 +438,6 @@ export function TemporadaClient({ content: c }: { content: TemporadaContent }) {
       </section>
 
       <Footer />
-      <BackToTopButton />
       <WhatsAppButton message={c.cta.whatsappMensagem} label="Consultar preço e datas" destaque />
     </div>
   );
