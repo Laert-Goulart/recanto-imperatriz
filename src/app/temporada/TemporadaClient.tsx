@@ -130,13 +130,14 @@ export function TemporadaClient({ content: c }: { content: TemporadaContent }) {
           )}
 
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-            <a href={siteConfig.airbnbUrl} target="_blank" rel="noopener" style={btnAirbnb}>
-              Ver datas e reservar no Airbnb
-            </a>
             <a href={waLink} target="_blank" rel="noopener" style={btnWhats}>
-              <WhatsAppIcon /> Falar no WhatsApp
+              <WhatsAppIcon /> Consultar preço e datas
+            </a>
+            <a href={siteConfig.airbnbUrl} target="_blank" rel="noopener" style={btnAirbnb}>
+              Reservar no Airbnb
             </a>
           </div>
+          <p style={{ fontSize: '13px', opacity: 0.8, margin: '10px 0 0' }}>Resposta rápida da anfitriã pelo WhatsApp.</p>
         </div>
       </section>
 
@@ -151,6 +152,35 @@ export function TemporadaClient({ content: c }: { content: TemporadaContent }) {
           ))}
         </div>
       </section>
+
+      {/* GALERIA — logo após os números, para quem chega pelo anúncio ver a casa primeiro */}
+      <section style={SECTION}>
+        <span style={TAG}>{c.galeria.tag}</span>
+        <h2 style={H2}>{c.galeria.title}</h2>
+        <div className="tp-scroll tp-galeria">
+          {c.galeria.images.map((img, i) => (
+            <img loading={i < 3 ? 'eager' : 'lazy'} decoding="async" key={i} src={img.src} alt={img.alt} className="tp-foto" onClick={() => abrir(c.galeria.images, i)}
+                 style={{ width: '100%', aspectRatio: '1/1', objectFit: 'cover', display: 'block', borderRadius: '2px' }} />
+          ))}
+        </div>
+
+        {c.quartos.fotos.length > 0 && (
+          <>
+            <h3 style={{ fontSize: '22px', fontWeight: 700, margin: '44px 0 18px' }}>{c.galeria.tituloQuartos}</h3>
+            <div className="tp-scroll tp-fotos-quartos">
+              {c.quartos.fotos.filter((f) => f.src).map((f, i) => (
+                <figure key={i} style={{ margin: 0 }}>
+                  <img loading="lazy" decoding="async" src={f.src} alt={f.alt} className="tp-foto" onClick={() => abrir(c.quartos.fotos, i)}
+                       style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block', borderRadius: '4px' }} />
+                  <figcaption style={{ fontSize: '13px', opacity: 0.7, marginTop: '8px' }}>{f.alt}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </>
+        )}
+      </section>
+
+      {DIVIDER}
 
       {/* PROVA SOCIAL */}
       <section style={SECTION}>
@@ -267,35 +297,6 @@ export function TemporadaClient({ content: c }: { content: TemporadaContent }) {
             </div>
           ))}
         </div>
-      </section>
-
-      {DIVIDER}
-
-      {/* GALERIA */}
-      <section style={SECTION}>
-        <span style={TAG}>{c.galeria.tag}</span>
-        <h2 style={H2}>{c.galeria.title}</h2>
-        <div className="tp-scroll tp-galeria">
-          {c.galeria.images.map((img, i) => (
-            <img loading="lazy" decoding="async" key={i} src={img.src} alt={img.alt} className="tp-foto" onClick={() => abrir(c.galeria.images, i)}
-                 style={{ width: '100%', aspectRatio: '1/1', objectFit: 'cover', display: 'block', borderRadius: '2px' }} />
-          ))}
-        </div>
-
-        {c.quartos.fotos.length > 0 && (
-          <>
-            <h3 style={{ fontSize: '22px', fontWeight: 700, margin: '44px 0 18px' }}>{c.galeria.tituloQuartos}</h3>
-            <div className="tp-scroll tp-fotos-quartos">
-              {c.quartos.fotos.filter((f) => f.src).map((f, i) => (
-                <figure key={i} style={{ margin: 0 }}>
-                  <img loading="lazy" decoding="async" src={f.src} alt={f.alt} className="tp-foto" onClick={() => abrir(c.quartos.fotos, i)}
-                       style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block', borderRadius: '4px' }} />
-                  <figcaption style={{ fontSize: '13px', opacity: 0.7, marginTop: '8px' }}>{f.alt}</figcaption>
-                </figure>
-              ))}
-            </div>
-          </>
-        )}
       </section>
 
       {lightbox && (
@@ -426,10 +427,12 @@ export function TemporadaClient({ content: c }: { content: TemporadaContent }) {
           <h2 style={{ fontSize: 'clamp(28px, 3.6vw, 44px)', fontWeight: 700, margin: '0 0 12px', color: colors.bg }}>{c.cta.title}</h2>
           <p style={{ fontSize: '16px', opacity: 0.92, margin: '0 0 24px', maxWidth: '60ch' }}>{c.cta.description}</p>
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-            <a href={siteConfig.airbnbUrl} target="_blank" rel="noopener" style={btnAirbnb}>Ver datas e reservar no Airbnb</a>
-            <a href={waLink} target="_blank" rel="noopener"
-               style={{ ...btnWhats, background: 'transparent', border: `2px solid ${colors.bg}` }}>
-              <WhatsAppIcon /> Falar no WhatsApp
+            <a href={waLink} target="_blank" rel="noopener" style={{ ...btnWhats, background: '#1f9d55' }}>
+              <WhatsAppIcon /> Consultar preço e datas
+            </a>
+            <a href={siteConfig.airbnbUrl} target="_blank" rel="noopener"
+               style={{ ...btnAirbnb, background: 'transparent', color: colors.bg, border: `2px solid ${colors.bg}` }}>
+              Reservar no Airbnb
             </a>
           </div>
         </div>
@@ -437,7 +440,7 @@ export function TemporadaClient({ content: c }: { content: TemporadaContent }) {
 
       <Footer />
       <BackToTopButton />
-      <WhatsAppButton message={c.cta.whatsappMensagem} />
+      <WhatsAppButton message={c.cta.whatsappMensagem} label="Consultar preço e datas" destaque />
     </div>
   );
 }

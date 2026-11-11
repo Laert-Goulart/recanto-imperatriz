@@ -175,7 +175,7 @@ export const temporadaContent = {
   cta: {
     title: 'Reserve a sua temporada na Serra',
     description: 'Consulte as datas disponíveis no Airbnb ou fale com a anfitriã pelo WhatsApp.',
-    whatsappMensagem: 'Olá! Vim pelo site e gostaria de consultar datas para alugar a casa por temporada.',
+    whatsappMensagem: 'Olá! Vim pelo site e gostaria de consultar o preço e as datas disponíveis para alugar a casa.',
   },
 };
 
