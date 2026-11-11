@@ -216,6 +216,29 @@ export function TemporadaClient({ content: c }: { content: TemporadaContent }) {
         </div>
       </section>
 
+      {/* NATUREZA — logo após a nota, destaca a reserva ambiental e as aves */}
+      <section className="tp-natureza">
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${c.natureza.image.src})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(16,31,17,0.9), rgba(16,31,17,0.55))' }} />
+        <div className="tp-nat-grid" style={{ position: 'relative', zIndex: 2, maxWidth: '1180px', margin: '0 auto', padding: '64px clamp(20px, 5vw, 64px)', width: '100%', color: '#f3f2f2' }}>
+          <div>
+            <span style={{ ...TAG, opacity: 0.85 }}>{c.natureza.tag}</span>
+            <h2 style={{ ...H2, color: '#f3f2f2', margin: '8px 0 14px' }}>{c.natureza.title}</h2>
+            <p style={{ fontSize: '16px', lineHeight: 1.65, opacity: 0.9, margin: '0 0 20px', maxWidth: '48ch' }}>{c.natureza.description}</p>
+            <a href="/fauna" style={{ color: colors.accent2, fontWeight: 700, fontSize: '14px' }}>{c.natureza.linkTexto} →</a>
+          </div>
+          <div className="tp-aves">
+            {c.natureza.fotos.filter((f) => f.src).map((f, i) => (
+              <figure key={i} style={{ margin: 0 }}>
+                <img loading="lazy" decoding="async" src={f.src} alt={f.alt} className="tp-foto" onClick={() => abrir(c.natureza.fotos, i)}
+                     style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', objectPosition: `${f.enquadramento || '50%'} center`, display: 'block', borderRadius: '6px' }} />
+                <figcaption style={{ fontSize: '12px', opacity: 0.85, marginTop: '6px', textAlign: 'center' }}>{f.alt}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* DEPOIMENTOS */}
       {c.depoimentos.itens.length > 0 && (
         <section style={{ background: colors.surface }}>
@@ -257,29 +280,6 @@ export function TemporadaClient({ content: c }: { content: TemporadaContent }) {
               <p style={{ fontSize: '14px', opacity: 0.75, margin: 0 }}>{d.description}</p>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* NATUREZA */}
-      <section className="tp-natureza">
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${c.natureza.image.src})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(16,31,17,0.9), rgba(16,31,17,0.55))' }} />
-        <div className="tp-nat-grid" style={{ position: 'relative', zIndex: 2, maxWidth: '1180px', margin: '0 auto', padding: '64px clamp(20px, 5vw, 64px)', width: '100%', color: '#f3f2f2' }}>
-          <div>
-            <span style={{ ...TAG, opacity: 0.85 }}>{c.natureza.tag}</span>
-            <h2 style={{ ...H2, color: '#f3f2f2', margin: '8px 0 14px' }}>{c.natureza.title}</h2>
-            <p style={{ fontSize: '16px', lineHeight: 1.65, opacity: 0.9, margin: '0 0 20px', maxWidth: '48ch' }}>{c.natureza.description}</p>
-            <a href="/fauna" style={{ color: colors.accent2, fontWeight: 700, fontSize: '14px' }}>{c.natureza.linkTexto} →</a>
-          </div>
-          <div className="tp-aves">
-            {c.natureza.fotos.filter((f) => f.src).map((f, i) => (
-              <figure key={i} style={{ margin: 0 }}>
-                <img loading="lazy" decoding="async" src={f.src} alt={f.alt} className="tp-foto" onClick={() => abrir(c.natureza.fotos, i)}
-                     style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', objectPosition: `${f.enquadramento || '50%'} center`, display: 'block', borderRadius: '6px' }} />
-                <figcaption style={{ fontSize: '12px', opacity: 0.85, marginTop: '6px', textAlign: 'center' }}>{f.alt}</figcaption>
-              </figure>
-            ))}
-          </div>
         </div>
       </section>
 
