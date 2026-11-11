@@ -1,3 +1,6 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import { siteConfig, colors } from '@/content/config';
 
 export function WhatsAppButton({
@@ -6,12 +9,25 @@ export function WhatsAppButton({
   destaque = false,
 }: { message?: string; label?: string; destaque?: boolean }) {
   const waUrl = `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(message)}`;
+  // Em destaque, só aparece depois que a pessoa passa da primeira tela,
+  // para não cobrir os botões do topo da página.
+  const [visivel, setVisivel] = useState(!destaque);
+
+  useEffect(() => {
+    if (!destaque) return;
+    const onScroll = () => setVisivel(window.scrollY > window.innerHeight * 0.7);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [destaque]);
 
   return (
     <a
       href={waUrl}
       target="_blank"
       rel="noopener noreferrer"
+      aria-hidden={!visivel}
+      tabIndex={visivel ? 0 : -1}
       style={{
         display: 'inline-flex',
         alignItems: 'center',
@@ -31,6 +47,10 @@ export function WhatsAppButton({
         right: '20px',
         zIndex: 50,
         boxShadow: destaque ? '0 8px 24px rgba(0, 0, 0, 0.28)' : '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+        opacity: visivel ? 1 : 0,
+        pointerEvents: visivel ? 'auto' : 'none',
+        transform: visivel ? 'none' : 'translateY(12px)',
+        transition: 'opacity .25s ease, transform .25s ease',
       }}
     >
       <svg width={destaque ? 20 : 16} height={destaque ? 20 : 16} viewBox="0 0 24 24" fill="currentColor">
